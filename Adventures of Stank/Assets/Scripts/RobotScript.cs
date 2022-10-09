@@ -1,29 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RobotScript : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public Transform target; //drag and stop player object in the inspector
-    public float within_range=100;
-    public float speed = 3;
-    // Start is called before the first frame update
+    Transform _transform;
+    const float travelSpeed = 3;
+    Rigidbody2D _rbody;
+    int distance = 5;
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
+        _rbody = GetComponent<Rigidbody2D>();
+        _transform = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //get the distance between the player and enemy (this object)
-        float dist = Vector3.Distance(target.position, transform.position);
-        //check if it is within the range you set
-        if (dist <= within_range)
+     
+    }
+    void FixedUpdate()
+    {
+        Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+        Vector3 speed = new Vector3(PlayerPos.x - _transform.position.x, PlayerPos.y - _transform.position.y, 0);
+        if (speed.magnitude > .2f && speed.magnitude<distance)
         {
-            //move to target(player) 
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+            _rbody.velocity = travelSpeed * speed.normalized;
+        }
+        else
+        {
+            _rbody.velocity = Vector3.zero;
         }
     }
+
+
 }
