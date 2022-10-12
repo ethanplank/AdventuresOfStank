@@ -34,7 +34,7 @@ public class MSM : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
-    public void pullSword()
+    public void PullSword()
     {
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot

@@ -28,5 +28,9 @@ public class PlayerScript : MonoBehaviour
         {
             msm.hitSwordDoor();
         }
+        if(collision.gameObject.tag == "SwordStone")
+        {
+            msm.PullSword();
+        }
     }
 }
