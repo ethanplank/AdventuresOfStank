@@ -2,20 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class MSM : MonoBehaviour
 {
+    public Sprite halfHeart;
+    public Sprite oneheart;
+    public Sprite oneandhalfheart;
+    public Sprite twoheart;
+    public Sprite twoandhalfheart;
+    public Sprite threeheart;
+
+    public Text gemText;
+    public Image currentHeartPic; 
     public int scene;
+
+    public double numHearts;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gemText.text = "= 0";
+        numHearts = 3;
+        currentHeartPic.sprite = threeheart;
+        print(numHearts);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        changeHearts(numHearts);
     }
 
     public void hitDoor()
@@ -38,5 +52,39 @@ public class MSM : MonoBehaviour
     {
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
+    }
+    private void changeHearts(double numHearts)
+    {
+        if (numHearts == 3)
+        {
+            currentHeartPic.sprite = threeheart;
+        }
+        else if (numHearts == 2.5)
+        {
+            currentHeartPic.sprite = twoandhalfheart;
+
+        }
+        else if (numHearts == 2)
+        {
+            currentHeartPic.sprite = twoheart;
+
+        }
+        else if (numHearts == 1.5)
+        {
+            currentHeartPic.sprite = oneandhalfheart;
+        }
+        else if (numHearts == 1)
+        {
+            currentHeartPic.sprite = oneheart;
+        }
+        else
+        {
+            currentHeartPic.sprite = halfHeart;
+        }
+    }
+    public void takeDamage(double damage)
+    {
+        numHearts -= .5;
+        print(numHearts);
     }
 }

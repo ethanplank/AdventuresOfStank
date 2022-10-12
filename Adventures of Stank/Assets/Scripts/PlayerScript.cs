@@ -32,5 +32,9 @@ public class PlayerScript : MonoBehaviour
         {
             msm.PullSword();
         }
+        if(collision.gameObject.tag == "Robot")
+        {
+            msm.takeDamage(1);
+        }
     }
 }
