@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Robot
+  - Alien
+  - SwordDoor
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -40,7 +45,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: 1
-    uniqueID: 485613089
     locked: 0
