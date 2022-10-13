@@ -13,6 +13,7 @@ public class MSM : MonoBehaviour
     public Sprite threeheart;
 
     public Text gemText;
+    public int gems;
     public Image currentHeartPic; 
     public int scene;
 
@@ -29,7 +30,9 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      //  print(numHearts);
         changeHearts(numHearts);
+        gemText.text = "= " + gems.ToString();
     }
 
     public void hitDoor()
@@ -84,7 +87,19 @@ public class MSM : MonoBehaviour
     }
     public void takeDamage(double damage)
     {
-        numHearts -= .5;
+        if (numHearts >= .5)
+        {
+            numHearts -= .5;
+        }
+        else
+        {
+             UnityEditor.EditorApplication.isPlaying = false;
+
+        }
         print(numHearts);
+    }
+    public void addGem()
+    {
+        gems++;
     }
 }

@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
    public MSM msm;
+    int speed = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int speed = 5;
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,9 +33,10 @@ public class PlayerScript : MonoBehaviour
         {
             msm.PullSword();
         }
-        if(collision.gameObject.tag == "Robot")
+        if (collision.gameObject.tag == "Gem")
         {
-            msm.takeDamage(1);
+            msm.addGem();
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class RobotScript : MonoBehaviour
 {
+    public MSM msm;
     Transform _transform;
     const float travelSpeed = 3;
     Rigidbody2D _rbody;
@@ -18,14 +19,14 @@ public class RobotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+
     }
     void FixedUpdate()
     {
         Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         Vector3 speed = new Vector3(PlayerPos.x - _transform.position.x, PlayerPos.y - _transform.position.y, 0);
-        if (speed.magnitude > .2f && speed.magnitude<distance)
+        if (speed.magnitude > .2f && speed.magnitude < distance)
         {
             _rbody.velocity = travelSpeed * speed.normalized;
         }
@@ -35,5 +36,12 @@ public class RobotScript : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            msm.takeDamage(0.5);
 
+        }
+    }
 }
