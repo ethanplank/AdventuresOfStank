@@ -10,10 +10,12 @@ public class RobotScript : MonoBehaviour
     const float travelSpeed = 3;
     Rigidbody2D _rbody;
     int distance = 5;
+    public int health;
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _transform = transform;
+        health = 50;
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class RobotScript : MonoBehaviour
         {
             _rbody.velocity = Vector3.zero;
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -43,5 +46,17 @@ public class RobotScript : MonoBehaviour
             msm.takeDamage(0.5);
 
         }
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health == 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
