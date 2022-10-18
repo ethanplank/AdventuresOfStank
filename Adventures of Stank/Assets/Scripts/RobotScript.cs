@@ -43,7 +43,7 @@ public class RobotScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            msm.takeDamage(0.5);
+            msm.takeDamage(1);
 
         }
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7900870431994333283
+--- !u!1 &7438352428029471497
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8733484927923979120}
-  - component: {fileID: -7124582522338465765}
+  - component: {fileID: 7877020148370013918}
+  - component: {fileID: 8014664803616947027}
   m_Layer: 0
   m_Name: MSM
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8733484927923979120
+--- !u!4 &7877020148370013918
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900870431994333283}
+  m_GameObject: {fileID: 7438352428029471497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.893183, y: -3.2911506, z: -117.440544}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,16 +31,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7124582522338465765
+--- !u!114 &8014664803616947027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900870431994333283}
+  m_GameObject: {fileID: 7438352428029471497}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d9c7c00e855c704eb607fdde895a07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  halfHeart: {fileID: 21300000, guid: e2bc0f4c26fef7c498afa2457034455d, type: 3}
+  oneheart: {fileID: 21300000, guid: 79980639767d5644e9bd3617bc2eb58d, type: 3}
+  oneandhalfheart: {fileID: 21300000, guid: 07ea119fbdb703846813ede7e0b9673f, type: 3}
+  twoheart: {fileID: 21300000, guid: 65b9087ddb7831d4d861935cbf1035a9, type: 3}
+  twoandhalfheart: {fileID: 21300000, guid: 8daac6ed35dfebc40be5953c2e3013bf, type: 3}
+  threeheart: {fileID: 21300000, guid: ef9ebb4df3774f748baae9069c58e1dd, type: 3}
+  gemText: {fileID: 0}
+  currentHeartPic: {fileID: 0}
   scene: 0
+  numHearts: 0
