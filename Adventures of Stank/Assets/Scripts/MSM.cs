@@ -39,7 +39,7 @@ public class MSM : MonoBehaviour
     void Update()
     {
         print(PlayerPrefs.GetInt("Hearts"));
-        changeHearts(numHearts);
+        changeHearts();
         gemText.text = "= " + gems.ToString();
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -48,6 +48,18 @@ public class MSM : MonoBehaviour
             PlayerPrefs.SetInt("Hearts", 6);
             UnityEditor.EditorApplication.isPlaying = false;
 
+        }
+
+
+
+
+        if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            if (Input.GetKeyDown(KeyCode.P) && numHearts<5 && gems>=15){
+                gems -= 15;
+                numHearts+=2;
+                changeHearts();
+            }
         }
     }
     private void saveData()
@@ -61,7 +73,7 @@ public class MSM : MonoBehaviour
         gems = PlayerPrefs.GetInt("Gems");
         numHearts = PlayerPrefs.GetInt("Hearts");
         hasSword = PlayerPrefs.GetInt("HasSword");
-        changeHearts(numHearts);
+        changeHearts();
         gemText.text = "= " + gems.ToString();
     }
 
@@ -89,7 +101,7 @@ public class MSM : MonoBehaviour
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
     }
-    private void changeHearts(int numHearts)
+    private void changeHearts()
     {
         if (numHearts == 6)
         {
@@ -127,13 +139,15 @@ public class MSM : MonoBehaviour
         }
         else
         {
-             UnityEditor.EditorApplication.isPlaying = false;
+            PlayerPrefs.SetInt("Gems", 0);
+            PlayerPrefs.SetInt("Hearts", 6);
+            UnityEditor.EditorApplication.isPlaying = false;
 
         }
     }
     public void purchase()
     {
-        if (Input.GetKeyDown(KeyCode.P) && numHearts<3 && gems>=15)
+        if (numHearts<3 && gems>=15)
         {
             numHearts++;
             gems -= 15;
