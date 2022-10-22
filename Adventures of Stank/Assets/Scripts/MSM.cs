@@ -131,6 +131,28 @@ public class MSM : MonoBehaviour
 
         }
     }
+    public void purchase()
+    {
+        if (Input.GetKeyDown(KeyCode.P) && numHearts<3 && gems>=15)
+        {
+            numHearts++;
+            gems -= 15;
+        }
+
+    }
+    public void openShop()
+    {
+        saveData();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(3);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            SceneManager.LoadScene(1);
+        }
+        loadData();
+    }
     public void addGem()
     {
         gems++;

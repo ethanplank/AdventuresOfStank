@@ -50,5 +50,13 @@ public class PlayerScript : MonoBehaviour
             msm.addGem();
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "ShopDoor")
+        {
+            msm.openShop();
+        }
+        if (collision.gameObject.gameObject.tag == "ShopTable")
+        {
+            msm.purchase();
+        }
     }
 }
