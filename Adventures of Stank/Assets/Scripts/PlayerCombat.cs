@@ -7,12 +7,14 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     public float swordRange = 0.4f;
     public LayerMask enemyLayer;
+    public MSM msm;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
             Attack();
+            
         }
     }
     void Attack()

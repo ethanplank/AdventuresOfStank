@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5345629776753949452}
   - component: {fileID: -3701740178764024117}
   - component: {fileID: -7717812049946444176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Robot
   m_TagString: Robot
   m_Icon: {fileID: 0}
@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msm: {fileID: 0}
+  health: 0
