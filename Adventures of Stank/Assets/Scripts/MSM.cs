@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,10 @@ public class MSM : MonoBehaviour
     public Sprite twoandhalfheart;
     public Sprite threeheart;
 
+    public GameObject bulletPrefab;
+
+
+    public PlayerScript player;
     public Text gemText;
     private int gems;
 
@@ -49,7 +54,10 @@ public class MSM : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
 
         }
-
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            shootLaser();
+        }
 
 
 
@@ -167,6 +175,50 @@ public class MSM : MonoBehaviour
         }
         loadData();
     }
+
+    public void shootLaser()
+    {
+        Vector2 shotVector;
+        if (player.direction == "north")
+        {
+            shotVector = new Vector2(0, 3);
+        }
+        else if (player.direction == "south")
+        {
+            shotVector = new Vector2(0, -3);
+        }
+        else if (player.direction == "west")
+        {
+            shotVector = new Vector2(-3, 0);
+        }
+        else if (player.direction == "east")
+        {
+            shotVector = new Vector2(3, 0);
+        }
+        else if (player.direction == "northwest")
+        {
+            shotVector = new Vector2(-3, 3);
+        }
+        else if (player.direction == "northeast")
+        {
+            shotVector = new Vector2(3, 3);
+        }
+        else if (player.direction == "southwest")
+        {
+            shotVector = new Vector2(-3, -3);
+        }
+        else if (player.direction == "southeast")
+        {
+            shotVector = new Vector2(3, -3);
+        }
+        else
+        {
+            shotVector = new Vector2(3, 0);
+        }
+        GameObject bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1/2, 0) , Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = shotVector;
+    }
+
     public void addGem()
     {
         gems++;

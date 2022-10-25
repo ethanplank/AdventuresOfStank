@@ -21,42 +21,8 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
-        if (_rbody.velocity.x > 0 && _rbody.velocity.y==0)
-        {
-            direction = "east";
-        }else if (_rbody.velocity.x > 0 && _rbody.velocity.y > 0)
-        {
-            direction = "northeast";
-        }
-        else if (_rbody.velocity.x > 0 && _rbody.velocity.y < 0)
-        {
-            direction = "southeast";
-        }
-        else if (_rbody.velocity.x < 0 && _rbody.velocity.y > 0)
-        {
-            direction = "northwest";
-        }
-        else if (_rbody.velocity.x < 0 && _rbody.velocity.y < 0)
-        {
-            direction = "southwest";
-        }
-        else if (_rbody.velocity.x < 0 && _rbody.velocity.y == 0)
-        {
-            direction = "west";
-        }
-        else if (_rbody.velocity.x == 0 && _rbody.velocity.y > 0)
-        {
-            direction = "north";
-        }
-        else if (_rbody.velocity.x == 0 && _rbody.velocity.y < 0)
-        {
-            direction = "south";
-        }
-        else
-        {
-            direction = "still";
-        }
-        print(direction);
+        checkDirection();
+       // print(direction);
     }
     private void checkSkin()
     {
@@ -93,6 +59,45 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.gameObject.tag == "ShopTable")
         {
             msm.purchase();
+        }
+    }
+    public void checkDirection()
+    {
+        if (_rbody.velocity.x > 0 && _rbody.velocity.y == 0)
+        {
+            direction = "east";
+        }
+        else if (_rbody.velocity.x > 0 && _rbody.velocity.y > 0)
+        {
+            direction = "northeast";
+        }
+        else if (_rbody.velocity.x > 0 && _rbody.velocity.y < 0)
+        {
+            direction = "southeast";
+        }
+        else if (_rbody.velocity.x < 0 && _rbody.velocity.y > 0)
+        {
+            direction = "northwest";
+        }
+        else if (_rbody.velocity.x < 0 && _rbody.velocity.y < 0)
+        {
+            direction = "southwest";
+        }
+        else if (_rbody.velocity.x < 0 && _rbody.velocity.y == 0)
+        {
+            direction = "west";
+        }
+        else if (_rbody.velocity.x == 0 && _rbody.velocity.y > 0)
+        {
+            direction = "north";
+        }
+        else if (_rbody.velocity.x == 0 && _rbody.velocity.y < 0)
+        {
+            direction = "south";
+        }
+        else
+        {
+            direction = "still";
         }
     }
 }
