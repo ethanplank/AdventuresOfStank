@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Transform attackPoint;
-    public float swordRange = 0.4f;
+    public float swordRange = 0.5f;
     public LayerMask enemyLayer;
     public MSM msm;
     // Update is called once per frame
@@ -13,11 +13,16 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Attack();
-            
+            sAttack();
+            print("x");
+
         }
     }
-    void Attack()
+    private void FixedUpdate()
+    {
+        
+    }
+    public void sAttack()
     {
         //Attack Animation
         //Detect enemies in range

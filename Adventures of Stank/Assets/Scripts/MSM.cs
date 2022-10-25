@@ -21,7 +21,7 @@ public class MSM : MonoBehaviour
 
     public int numHearts;
 
-    private int hasSword;
+    public int hasSword;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +38,7 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(hasSword);
      //   print(PlayerPrefs.GetInt("Hearts"));
         changeHearts();
         gemText.text = "= " + gems.ToString();
@@ -45,6 +46,7 @@ public class MSM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PlayerPrefs.SetInt("Gems", 0);
+            PlayerPrefs.SetInt("HasSword", 0);
             PlayerPrefs.SetInt("Hearts", 6);
             UnityEditor.EditorApplication.isPlaying = false;
 
@@ -100,6 +102,8 @@ public class MSM : MonoBehaviour
     {
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
+        hasSword = 1;
+        saveData();
     }
     private void changeHearts()
     {
@@ -171,4 +175,5 @@ public class MSM : MonoBehaviour
     {
         gems++;
     }
+    
 }

@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msm: {fileID: 0}
-  health: 0
+  health: 10

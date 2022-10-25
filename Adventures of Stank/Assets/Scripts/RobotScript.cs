@@ -15,7 +15,7 @@ public class RobotScript : MonoBehaviour
     {
         _rbody = GetComponent<Rigidbody2D>();
         _transform = transform;
-        health = 50;
+        health = 10;
     }
 
     // Update is called once per frame

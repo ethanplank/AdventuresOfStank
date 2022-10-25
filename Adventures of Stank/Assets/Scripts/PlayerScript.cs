@@ -8,18 +8,19 @@ public class PlayerScript : MonoBehaviour
    public MSM msm;
     int speed = 5;
     public Sprite SwordSkank;
-    public bool sSkin;
+   
     public string direction;
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        checkSkin();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        checkSkin();
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         if (_rbody.velocity.x > 0 && _rbody.velocity.y==0)
         {
@@ -58,9 +59,13 @@ public class PlayerScript : MonoBehaviour
         }
         print(direction);
     }
+    private void FixedUpdate()
+    {
+        
+    }
     private void checkSkin()
     {
-        if (sSkin == true)
+        if (msm.hasSword == 1)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
         }
@@ -79,7 +84,7 @@ public class PlayerScript : MonoBehaviour
         {
             msm.PullSword();
             this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
-            sSkin = true;
+            
         }
         if (collision.gameObject.tag == "Gem")
         {
