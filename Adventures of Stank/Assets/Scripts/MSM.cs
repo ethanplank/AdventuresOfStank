@@ -38,7 +38,7 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(PlayerPrefs.GetInt("Hearts"));
+     //   print(PlayerPrefs.GetInt("Hearts"));
         changeHearts();
         gemText.text = "= " + gems.ToString();
 

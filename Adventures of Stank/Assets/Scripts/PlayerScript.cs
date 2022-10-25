@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     int speed = 5;
     public Sprite SwordSkank;
     public bool sSkin;
-
+    public string direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,42 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
+        if (_rbody.velocity.x > 0 && _rbody.velocity.y==0)
+        {
+            direction = "east";
+        }else if (_rbody.velocity.x > 0 && _rbody.velocity.y > 0)
+        {
+            direction = "northeast";
+        }
+        else if (_rbody.velocity.x > 0 && _rbody.velocity.y < 0)
+        {
+            direction = "southeast";
+        }
+        else if (_rbody.velocity.x < 0 && _rbody.velocity.y > 0)
+        {
+            direction = "northwest";
+        }
+        else if (_rbody.velocity.x < 0 && _rbody.velocity.y < 0)
+        {
+            direction = "southwest";
+        }
+        else if (_rbody.velocity.x < 0 && _rbody.velocity.y == 0)
+        {
+            direction = "west";
+        }
+        else if (_rbody.velocity.x == 0 && _rbody.velocity.y > 0)
+        {
+            direction = "north";
+        }
+        else if (_rbody.velocity.x == 0 && _rbody.velocity.y < 0)
+        {
+            direction = "south";
+        }
+        else
+        {
+            direction = "still";
+        }
+        print(direction);
     }
     private void checkSkin()
     {
