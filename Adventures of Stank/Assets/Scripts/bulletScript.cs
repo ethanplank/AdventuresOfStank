@@ -18,14 +18,7 @@ public class bulletScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Robot")
-        {
-            Destroy(gameObject);
-        }
-    }
-    public void fire(Vector2 direction)
-    {
-        print("Here!");
-        rb.velocity = new Vector2(2, 0);
+        //Put this back in a bit
+     //   Destroy(gameObject);
     }
 }
