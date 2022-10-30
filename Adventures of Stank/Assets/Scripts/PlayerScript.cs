@@ -8,7 +8,13 @@ public class PlayerScript : MonoBehaviour
    public MSM msm;
     int speed = 5;
     public Sprite SwordSkank;
-   
+    public Sprite StillStank;
+    public Sprite moveForward;
+    public Sprite moveBackward;
+    public Sprite moveLeft;
+    public Sprite moveRight;
+    public Sprite SwingSword;
+    public Sprite ShootLaser;
     public string direction;
     // Start is called before the first frame update
     void Start()
@@ -20,9 +26,12 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         checkSkin();
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
+        changeSkin();
+
        // print(direction);
     }
     private void FixedUpdate()
@@ -33,7 +42,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (msm.hasSword == 1)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
+          //  this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,7 +58,7 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "SwordStone")
         {
             msm.PullSword();
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
+          //  this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
             
         }
         if (collision.gameObject.tag == "Gem")
@@ -103,6 +112,41 @@ public class PlayerScript : MonoBehaviour
         else
         {
             direction = "still";
+        }
+    }
+    private void changeSkin()
+    {
+        if (direction=="west")
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = moveLeft;
+        }
+        else if (direction=="east")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = moveRight;
+        }
+        else if ((direction == "north" || direction == "northeast" || direction == "northwest"))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = moveBackward;
+        }
+        else if (direction== "south" || direction=="southwest" || direction== "southeast")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = moveForward;
+
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = SwingSword;
+
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = StillStank;
+
         }
     }
 }
