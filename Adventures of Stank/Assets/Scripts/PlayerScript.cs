@@ -7,16 +7,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D _rbody;
    public MSM msm;
     int speed = 5;
-  //  public Sprite SwordSkank;
     public Animator animate;
 
-  //  public Sprite StillStank;
-//    public Sprite moveForward;
- //   public Sprite moveBackward;
- //   public Sprite moveLeft;
-  //  public Sprite moveRight;
-  // public Sprite SwingSword;
-  //  public Sprite ShootLaser;
     public string direction;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +26,6 @@ public class PlayerScript : MonoBehaviour
         checkDirection();
         changeSkin();
 
-       // print(direction);
     }
     private void FixedUpdate()
     {
@@ -44,7 +35,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (msm.hasSword == 1)
         {
-          //  this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
+            //Put code here for allowing sword animation
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,14 +50,7 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.gameObject.tag == "SwordStone")
         {
-            msm.PullSword();
-          //  this.gameObject.GetComponent<SpriteRenderer>().sprite = SwordSkank;
-            
-        }
-        if (collision.gameObject.tag == "Gem")
-        {
-            msm.addGem();
-            Destroy(collision.gameObject);
+            msm.PullSword();            
         }
         if (collision.gameObject.tag == "ShopDoor")
         {
@@ -75,6 +59,14 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.gameObject.tag == "ShopTable")
         {
             msm.purchase();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Gem")
+        {
+            msm.addGem();
+            Destroy(collision.gameObject);
         }
     }
     public void checkDirection()

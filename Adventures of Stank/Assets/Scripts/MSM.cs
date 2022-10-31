@@ -183,43 +183,75 @@ public class MSM : MonoBehaviour
     public void shootLaser()
     {
         Vector2 shotVector;
+        int bulletSpeed = 7;
+        GameObject bullet;
+        //GameObject bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
+        shotVector = new Vector2(bulletSpeed, 0);
         if (player.direction == "north")
         {
-            shotVector = new Vector2(0, 3);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, 1), Quaternion.identity);
+           
+            shotVector = new Vector2(0, bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = 90;
+
         }
         else if (player.direction == "south")
         {
-            shotVector = new Vector2(0, -3);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, -1), Quaternion.identity);
+
+            shotVector = new Vector2(0, -bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = 90;
+
         }
         else if (player.direction == "west")
         {
-            shotVector = new Vector2(-3, 0);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, 0), Quaternion.identity);
+
+            shotVector = new Vector2(-bulletSpeed, 0);
         }
         else if (player.direction == "east")
         {
-            shotVector = new Vector2(3, 0);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
+
+            shotVector = new Vector2(bulletSpeed, 0);
         }
         else if (player.direction == "northwest")
         {
-            shotVector = new Vector2(-3, 3);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, 1), Quaternion.identity);
+
+            shotVector = new Vector2(-bulletSpeed, bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = -45;
+
         }
         else if (player.direction == "northeast")
         {
-            shotVector = new Vector2(3, 3);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1 ,1), Quaternion.identity);
+
+            shotVector = new Vector2(bulletSpeed, bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = 45;
+
         }
         else if (player.direction == "southwest")
         {
-            shotVector = new Vector2(-3, -3);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, -1), Quaternion.identity);
+
+            shotVector = new Vector2(-bulletSpeed, -bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = 45;
+
         }
         else if (player.direction == "southeast")
         {
-            shotVector = new Vector2(3, -3);
+             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, -1), Quaternion.identity);
+
+            shotVector = new Vector2(bulletSpeed, -bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = -45;
+
         }
         else
         {
-            shotVector = new Vector2(3, 0);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
         }
-        GameObject bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1/2, 0) , Quaternion.identity);
+
         bullet.GetComponent<Rigidbody2D>().velocity = shotVector;
     }
 

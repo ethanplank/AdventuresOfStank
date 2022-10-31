@@ -5,7 +5,9 @@ using UnityEngine;
 public class bulletScript : MonoBehaviour
 {
     public MSM manager;
+    public string direction;
     private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,9 @@ public class bulletScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Put this back in a bit
-     //   Destroy(gameObject);
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag!="Bullet")
+        {
+            Destroy(gameObject);
+        }
     }
 }
