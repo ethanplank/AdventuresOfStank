@@ -7,14 +7,16 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D _rbody;
    public MSM msm;
     int speed = 5;
-    public Sprite SwordSkank;
-    public Sprite StillStank;
-    public Sprite moveForward;
-    public Sprite moveBackward;
-    public Sprite moveLeft;
-    public Sprite moveRight;
-    public Sprite SwingSword;
-    public Sprite ShootLaser;
+  //  public Sprite SwordSkank;
+    public Animator animate;
+
+  //  public Sprite StillStank;
+//    public Sprite moveForward;
+ //   public Sprite moveBackward;
+ //   public Sprite moveLeft;
+  //  public Sprite moveRight;
+  // public Sprite SwingSword;
+  //  public Sprite ShootLaser;
     public string direction;
     // Start is called before the first frame update
     void Start()
@@ -118,34 +120,36 @@ public class PlayerScript : MonoBehaviour
     {
         if (direction=="west")
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = moveLeft;
-        }
+            animate.SetInteger("moveX", -1);
+                }
         else if (direction=="east")
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = moveRight;
+            animate.SetInteger("moveX", 1);
         }
         else if ((direction == "north" || direction == "northeast" || direction == "northwest"))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = moveBackward;
+            animate.SetInteger("moveY", 1);
         }
         else if (direction== "south" || direction=="southwest" || direction== "southeast")
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = moveForward;
+            animate.SetInteger("moveY", -1);
 
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
+       //     gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
 
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = SwingSword;
+            //gameObject.GetComponent<SpriteRenderer>().sprite = SwingSword;
 
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = StillStank;
+            animate.SetInteger("moveX", 0);
+            animate.SetInteger("moveY", 0);
+
 
         }
     }
