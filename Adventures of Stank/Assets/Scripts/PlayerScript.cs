@@ -9,6 +9,16 @@ public class PlayerScript : MonoBehaviour
     int speed = 5;
     public Animator animate;
 
+    public string currentAnimation;
+    const string northwest = "StankNorthWest";
+    const string southwest = "StankSouthWest";
+    const string southeast = "StankSouthEast";
+    const string northeast = "StankNorthEast";
+    const string north = "StankMoveBack";
+    const string south = "RunForward";
+    const string east = "StankMoveRight";
+    const string west = "StankMoveLeft";
+    const string idle = "StankStationary";
     public string direction;
     // Start is called before the first frame update
     void Start()
@@ -110,22 +120,46 @@ public class PlayerScript : MonoBehaviour
     }
     private void changeSkin()
     {
-        if (direction=="west")
+        if (direction == "west")
         {
-            animate.SetInteger("moveX", -1);
-                }
-        else if (direction=="east")
-        {
-            animate.SetInteger("moveX", 1);
+            animate.Play(west);
         }
-        else if ((direction == "north" || direction == "northeast" || direction == "northwest"))
+        else if (direction == "east")
         {
-            animate.SetInteger("moveY", 1);
+            animate.Play(east);
+            
         }
-        else if (direction== "south" || direction=="southwest" || direction== "southeast")
+        else if ((direction == "north"))
         {
-            animate.SetInteger("moveY", -1);
+            animate.Play(north);
+           
+        }
+        else if (direction == "south")
+        {
+            animate.Play(south);
+           
 
+        } else if (direction == "southeast")
+        {
+         
+            animate.Play(southeast);
+
+           
+        }
+        else if (direction == "southwest")
+        {
+            animate.Play(southwest);
+           
+        }
+        else if (direction == "northeast")
+        {
+            animate.Play(northeast);
+           
+        }
+        else if (direction == "northwest")
+        {
+            animate.Play(northwest);
+            
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
@@ -139,8 +173,8 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            animate.SetInteger("moveX", 0);
-            animate.SetInteger("moveY", 0);
+            animate.Play(idle);
+           
 
 
         }
