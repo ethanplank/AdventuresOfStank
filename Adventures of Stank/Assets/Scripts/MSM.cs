@@ -74,6 +74,7 @@ public class MSM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown)
         {
             shootLaser();
+            player.shootGun();
             audiosource.PlayOneShot(laserShot);
             timeStamp = Time.time;
         }
@@ -274,7 +275,10 @@ public class MSM : MonoBehaviour
         }
         else
         {
-            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, -1), Quaternion.identity);
+
+            shotVector = new Vector2(0, -bulletSpeed);
+            bullet.GetComponent<Rigidbody2D>().rotation = 90;
         }
 
         bullet.GetComponent<Rigidbody2D>().velocity = shotVector;

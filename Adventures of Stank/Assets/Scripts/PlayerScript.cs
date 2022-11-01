@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -21,10 +22,14 @@ public class PlayerScript : MonoBehaviour
     const string west = "StankMoveLeft";
     const string idle = "StankStationary";
     const string sword = "StankSword";
+    const string gunRight = "StankGunRight";
+    const string gunLeft = "StankGunLeft";
+    const string gunForward = "StankGunForward";
     public string direction;
 
     private float swordCooldown;
     Boolean isSwinging = false;
+    Boolean isShooting = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +45,7 @@ public class PlayerScript : MonoBehaviour
         checkSkin();
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
-        if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time>swordCooldown+1)
+        if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time>swordCooldown+1 &&!isShooting)
         {
             isSwinging = true;
             msm.playSwordSound();
@@ -53,6 +58,10 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         
+    }
+    public void shootGun()
+    {
+        isShooting = true;
     }
     private void checkSkin()
     {
@@ -93,6 +102,7 @@ public class PlayerScript : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+  
     public void checkDirection()
     {
         if (_rbody.velocity.x > 0 && _rbody.velocity.y == 0)
@@ -134,7 +144,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void changeSkin()
     {
-        if (!isSwinging)
+        if (!isSwinging && !isShooting)
         {
             if (direction == "west")
             {
@@ -178,26 +188,38 @@ public class PlayerScript : MonoBehaviour
                 animate.Play(northwest);
 
             }
-            else if (Input.GetKeyDown(KeyCode.Z))
-            {
-            }
             else
             {
                 animate.Play(idle);
-
-
-
             }
-        }else
+        }else if(!isShooting)
         {
             animate.Play(sword);
-            isSwinging = true;
             Invoke("TurnOffSword", 1);
 
+        }
+        else if(!isSwinging)
+        {
+            if(direction == "south" || direction =="still")
+            {
+                animate.Play(gunForward);
+            }else if(direction =="west" || direction == "southwest")
+            {
+                animate.Play(gunLeft);
+            }else if(direction=="east" || direction == "southeast")
+            {
+                animate.Play(gunRight);
+            }
+            isShooting = true;
+            Invoke("TurnOffGun", 1);
         }
     }
     private void TurnOffSword()
     {
         isSwinging = false;
+    }
+    private void TurnOffGun()
+    {
+        isShooting = false;
     }
 }
