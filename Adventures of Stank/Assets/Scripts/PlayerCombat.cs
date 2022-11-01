@@ -8,12 +8,18 @@ public class PlayerCombat : MonoBehaviour
     public float swordRange = 0.5f;
     public LayerMask enemyLayer;
     public MSM msm;
+    private float swordDelay;
     // Update is called once per frame
+    private void Start()
+    {
+        swordDelay = Time.time;
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && Time.time> swordDelay+1)
         {
             sAttack();
+            swordDelay = Time.time;
           //  print("x");
 
         }

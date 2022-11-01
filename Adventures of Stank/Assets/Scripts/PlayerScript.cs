@@ -23,12 +23,13 @@ public class PlayerScript : MonoBehaviour
     const string sword = "StankSword";
     public string direction;
 
+    private float swordCooldown;
     Boolean isSwinging = false;
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
-        
+        swordCooldown = Time.time;
         
     }
 
@@ -39,9 +40,11 @@ public class PlayerScript : MonoBehaviour
         checkSkin();
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
-        if (Input.GetKeyDown(KeyCode.X) && !isSwinging)
+        if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time>swordCooldown+1)
         {
             isSwinging = true;
+            msm.playSwordSound();
+            swordCooldown = Time.time;
         }
         changeSkin();
 

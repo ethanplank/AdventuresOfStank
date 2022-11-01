@@ -28,16 +28,23 @@ public class MSM : MonoBehaviour
 
     private int cooldown =1;
     private float timeStamp;
+    private float swordDelay;
     public int hasSword;
     private Inventory inventory;
+
+    private AudioSource audiosource;
+    public AudioClip heartGain;
+    public AudioClip laserShot;
+    public AudioClip getHurt;
+    public AudioClip useSword;
+    public AudioClip getGem;
     [SerializeField] private UI_Inventory UI_Inventory;
     // Start is called before the first frame update
     void Start()
     {
-        float timeStamp = Time.time;
-
+         timeStamp = Time.time;
         inventory = new Inventory();
-        
+        audiosource = gameObject.GetComponent<AudioSource>();
         if ((SceneManager.GetActiveScene().buildIndex == 0))
         {
             PlayerPrefs.SetInt("Gems", 0);
@@ -52,6 +59,7 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         changeHearts();
         gemText.text = "= " + gems.ToString();
 
@@ -66,6 +74,7 @@ public class MSM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown)
         {
             shootLaser();
+            audiosource.PlayOneShot(laserShot);
             timeStamp = Time.time;
         }
 
@@ -76,6 +85,7 @@ public class MSM : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P) && numHearts<5 && gems>=15){
                 gems -= 15;
                 numHearts+=2;
+                audiosource.PlayOneShot(heartGain);
                 changeHearts();
             }
         }
@@ -123,6 +133,7 @@ public class MSM : MonoBehaviour
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
         inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
+        audiosource.PlayOneShot(useSword);
         hasSword = 1;
         saveData();
     }
@@ -158,6 +169,7 @@ public class MSM : MonoBehaviour
     }
     public void takeDamage(int damage)
     {
+        audiosource.PlayOneShot(getHurt);
         if (numHearts >= 1)
         {
             numHearts -= 1;
@@ -270,7 +282,12 @@ public class MSM : MonoBehaviour
 
     public void addGem()
     {
+        audiosource.PlayOneShot(getGem);
         gems++;
     }
-    
+   
+    public void playSwordSound()
+    {
+        audiosource.PlayOneShot(useSword);
+    }
 }
