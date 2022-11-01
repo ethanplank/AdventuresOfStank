@@ -27,9 +27,13 @@ public class MSM : MonoBehaviour
     public int numHearts;
 
     public int hasSword;
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory UI_Inventory;
     // Start is called before the first frame update
     void Start()
     {
+        inventory = new Inventory();
+        
         if ((SceneManager.GetActiveScene().buildIndex == 0))
         {
             PlayerPrefs.SetInt("Gems", 0);
@@ -38,6 +42,7 @@ public class MSM : MonoBehaviour
         }
        
         loadData();
+        UI_Inventory.SetInventory(inventory);
     }
     
     // Update is called once per frame
@@ -85,6 +90,10 @@ public class MSM : MonoBehaviour
         hasSword = PlayerPrefs.GetInt("HasSword");
         changeHearts();
         gemText.text = "= " + gems.ToString();
+        if (hasSword == 1)
+        {
+            inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
+        }
     }
 
     public void hitDoor()
@@ -110,6 +119,7 @@ public class MSM : MonoBehaviour
     {
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
+        inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
         hasSword = 1;
         saveData();
     }

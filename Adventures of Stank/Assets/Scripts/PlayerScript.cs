@@ -20,10 +20,13 @@ public class PlayerScript : MonoBehaviour
     const string west = "StankMoveLeft";
     const string idle = "StankStationary";
     public string direction;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        
         
     }
 
@@ -60,6 +63,7 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.gameObject.tag == "SwordStone")
         {
+            
             msm.PullSword();            
         }
         if (collision.gameObject.tag == "ShopDoor")
