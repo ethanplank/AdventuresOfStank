@@ -14,7 +14,7 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             sAttack();
-            print("x");
+          //  print("x");
 
         }
     }

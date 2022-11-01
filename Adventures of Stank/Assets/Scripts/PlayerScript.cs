@@ -39,12 +39,12 @@ public class PlayerScript : MonoBehaviour
         checkSkin();
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
+        if (Input.GetKeyDown(KeyCode.X) && !isSwinging)
+        {
+            isSwinging = true;
+        }
         changeSkin();
-        //if (Input.GetKeyDown(KeyCode.X))
-        //{
-        //    isSwinging = true;
-      //  }
-        
+
 
     }
     private void FixedUpdate()
@@ -175,15 +175,6 @@ public class PlayerScript : MonoBehaviour
                 animate.Play(northwest);
 
             }
-            else if (isSwinging)
-
-            {
-                animate.Play(sword);
-                Invoke("TurnOffSword", 1);
-
-                //     gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
-
-            }
             else if (Input.GetKeyDown(KeyCode.Z))
             {
             }
@@ -194,9 +185,15 @@ public class PlayerScript : MonoBehaviour
 
 
             }
+        }else
+        {
+            animate.Play(sword);
+            isSwinging = true;
+            Invoke("TurnOffSword", 1);
+
         }
     }
-    private void TurnOfSword()
+    private void TurnOffSword()
     {
         isSwinging = false;
     }
