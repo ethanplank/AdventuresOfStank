@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +22,8 @@ public class PlayerScript : MonoBehaviour
     const string idle = "StankStationary";
     const string sword = "StankSword";
     public string direction;
-    
-    
+
+    Boolean isSwinging = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,11 @@ public class PlayerScript : MonoBehaviour
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
         changeSkin();
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    isSwinging = true;
+      //  }
+        
 
     }
     private void FixedUpdate()
@@ -125,64 +131,73 @@ public class PlayerScript : MonoBehaviour
     }
     private void changeSkin()
     {
-        if (direction == "west")
+        if (!isSwinging)
         {
-            animate.Play(west);
-        }
-        else if (direction == "east")
-        {
-            animate.Play(east);
-            
-        }
-        else if ((direction == "north"))
-        {
-            animate.Play(north);
-           
-        }
-        else if (direction == "south")
-        {
-            animate.Play(south);
-           
+            if (direction == "west")
+            {
+                animate.Play(west);
+            }
+            else if (direction == "east")
+            {
+                animate.Play(east);
 
-        } else if (direction == "southeast")
-        {
-         
-            animate.Play(southeast);
+            }
+            else if ((direction == "north"))
+            {
+                animate.Play(north);
 
-           
-        }
-        else if (direction == "southwest")
-        {
-            animate.Play(southwest);
-           
-        }
-        else if (direction == "northeast")
-        {
-            animate.Play(northeast);
-           
-        }
-        else if (direction == "northwest")
-        {
-            animate.Play(northwest);
-            
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-
-        {
-            animate.Play(sword);
-
-            //     gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {
-        }
-        else
-        {
-            animate.Play(idle);
-           
+            }
+            else if (direction == "south")
+            {
+                animate.Play(south);
 
 
+            }
+            else if (direction == "southeast")
+            {
+
+                animate.Play(southeast);
+
+
+            }
+            else if (direction == "southwest")
+            {
+                animate.Play(southwest);
+
+            }
+            else if (direction == "northeast")
+            {
+                animate.Play(northeast);
+
+            }
+            else if (direction == "northwest")
+            {
+                animate.Play(northwest);
+
+            }
+            else if (isSwinging)
+
+            {
+                animate.Play(sword);
+                Invoke("TurnOffSword", 1);
+
+                //     gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Z))
+            {
+            }
+            else
+            {
+                animate.Play(idle);
+
+
+
+            }
         }
+    }
+    private void TurnOfSword()
+    {
+        isSwinging = false;
     }
 }
