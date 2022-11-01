@@ -26,12 +26,16 @@ public class MSM : MonoBehaviour
 
     public int numHearts;
 
+    private int cooldown =1;
+    private float timeStamp;
     public int hasSword;
     private Inventory inventory;
     [SerializeField] private UI_Inventory UI_Inventory;
     // Start is called before the first frame update
     void Start()
     {
+        float timeStamp = Time.time;
+
         inventory = new Inventory();
         
         if ((SceneManager.GetActiveScene().buildIndex == 0))
@@ -48,8 +52,6 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  print(hasSword);
-     //   print(PlayerPrefs.GetInt("Hearts"));
         changeHearts();
         gemText.text = "= " + gems.ToString();
 
@@ -61,9 +63,10 @@ public class MSM : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
 
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown)
         {
             shootLaser();
+            timeStamp = Time.time;
         }
 
 
