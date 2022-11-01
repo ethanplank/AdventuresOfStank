@@ -10,15 +10,26 @@ public class UI_Inventory : MonoBehaviour
     private void Awake()
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
-        itemSlotTemplate = transform.Find("itemSlotTemplate");
+        itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
     }
     public void SetInventory(Inventory inv)
     {
         this.inventory = inv;
+        RefreshInventoryItems();
     }
     private void RefreshInventoryItems()
     {
-
+        int x = 0;
+        int y = 0;
+        float itemSlotCellSize = 100f;
+        foreach (Item item in inventory.GetItemList())
+        {
+            RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
+            itemSlotRectTransform.gameObject.SetActive(true);
+            itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+            x++;
+            
+        }
     }
     
 }
