@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     const string east = "StankMoveRight";
     const string west = "StankMoveLeft";
     const string idle = "StankStationary";
+    const string sword = "StankSword";
     public string direction;
     // Start is called before the first frame update
     void Start()
@@ -162,14 +163,15 @@ public class PlayerScript : MonoBehaviour
             
         }
         else if (Input.GetKeyDown(KeyCode.X))
+
         {
-       //     gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
+            animate.Play(sword);
+
+            //     gameObject.GetComponent<SpriteRenderer>().sprite = ShootLaser;
 
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            //gameObject.GetComponent<SpriteRenderer>().sprite = SwingSword;
-
         }
         else
         {
