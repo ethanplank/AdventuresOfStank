@@ -49,7 +49,7 @@ public class RobotScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
-            Destroy(gameObject);
+            TakeDamage(5);
         }
     }
     public void TakeDamage(int damage)
