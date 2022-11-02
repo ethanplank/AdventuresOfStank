@@ -61,19 +61,22 @@ public class PlayerScript : MonoBehaviour
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
         if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time>swordCooldown+1 &&!isShooting
-            && Time.time > swordDelay + 1)
+            && Time.time > swordDelay + 1 && msm.hasSword == 1)
         {
             isSwinging = true;
             msm.playSwordSound();
             swordCooldown = Time.time;
             if(activeSword)
             {
+                
                 sAttack();
                 swordDelay = Time.time;
             }
+            
         }
         changeSkin();
-        
+
+
 
 
     }
@@ -85,7 +88,7 @@ public class PlayerScript : MonoBehaviour
         //Enemy damage
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<RobotScript>().TakeDamage(5);
+            enemy.GetComponent<RobotScript>().TakeDamage(10);
 
         }
     }
@@ -120,12 +123,21 @@ public class PlayerScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "SwordStone")
         {
+            
+            if (msm.hasSword == 0)
+            {
+                msm.PullSword();
+            }
             activeSword = true;
-            msm.PullSword();            
+
         }
         if (collision.gameObject.tag == "GunHolster")
         {
-            msm.PullGun();
+            if (msm.hasGun == 0)
+            {
+                msm.PullGun();
+            }
+            
         }
         if (collision.gameObject.tag == "ShopDoor")
         {
