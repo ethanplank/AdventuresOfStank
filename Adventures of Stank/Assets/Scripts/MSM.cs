@@ -139,7 +139,7 @@ public class MSM : MonoBehaviour
     public void hitGunDoor()
     {
         saveData();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(5);
         loadData();
     }
     public void PullSword()
