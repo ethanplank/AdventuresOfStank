@@ -11014,10 +11014,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
-      propertyPath: getGem
-      value: 
-      objectReference: {fileID: 8300000, guid: 27e7fc18caf89674c9df37d34a500e67, type: 3}
-    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1659636853020685185}
@@ -11025,22 +11021,6 @@ PrefabInstance:
       propertyPath: gemText
       value: 
       objectReference: {fileID: 1839002640}
-    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
-      propertyPath: getHurt
-      value: 
-      objectReference: {fileID: 8300000, guid: 527c7f8500a27db4fa87975ddc40661d, type: 3}
-    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
-      propertyPath: useSword
-      value: 
-      objectReference: {fileID: 8300000, guid: df8059e37fd16284baf3f260abb5fcff, type: 3}
-    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
-      propertyPath: heartGain
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b32c874a31d9e54f84700f5cf56a4fb, type: 3}
-    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
-      propertyPath: laserShot
-      value: 
-      objectReference: {fileID: 8300000, guid: 234051f8c925a604183986456a594a1e, type: 3}
     - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
       propertyPath: destroyRob
       value: 

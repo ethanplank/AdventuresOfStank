@@ -136,7 +136,7 @@ public class MSM : MonoBehaviour
         //Then add sword to item slot
         inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
         
-        audiosource.PlayOneShot(useSword);
+        //audiosource.PlayOneShot(useSword);
         hasSword = 1;
         saveData();
     }

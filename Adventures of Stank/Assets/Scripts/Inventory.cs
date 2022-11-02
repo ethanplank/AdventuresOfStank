@@ -8,7 +8,7 @@ public class Inventory
     public Inventory()
     {
         itemList = new List<Item>();
-        AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
+        
         
         Debug.Log(itemList.Count);
     }
@@ -21,6 +21,10 @@ public class Inventory
         return itemList;
     }
     public void addSword()
+    {
+        AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
+    }
+    public void addGun()
     {
         AddItem(new Item { itemType = Item.ItemType.LaserGun, amount = 1 });
     }
