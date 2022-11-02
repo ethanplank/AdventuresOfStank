@@ -131,7 +131,12 @@ public class MSM : MonoBehaviour
             timeStamp = Time.time;
         }
        
-
+        if(PlayerPrefs.GetInt("Part1")==0 && PlayerPrefs.GetInt("Part2")==0 
+            && PlayerPrefs.GetInt("Part3")==0 && PlayerPrefs.GetInt("Part4") == 0 
+            && PlayerPrefs.GetInt("Part5") == 0)
+        {
+            SceneManager.LoadScene(6);
+        }
 
         if (SceneManager.GetActiveScene().buildIndex == 3)
         {
