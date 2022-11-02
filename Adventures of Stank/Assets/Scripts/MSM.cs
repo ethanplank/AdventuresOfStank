@@ -42,7 +42,7 @@ public class MSM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         timeStamp = Time.time;
+        timeStamp = Time.time;
         inventory = new Inventory();
         audiosource = gameObject.GetComponent<AudioSource>();
         if ((SceneManager.GetActiveScene().buildIndex == 0))
@@ -51,6 +51,7 @@ public class MSM : MonoBehaviour
             PlayerPrefs.SetInt("HasSword", 0);
             PlayerPrefs.SetInt("Hearts", 6);
         }
+        hasSword = 0;
        
         loadData();
         UI_Inventory.SetInventory(inventory);
@@ -134,6 +135,7 @@ public class MSM : MonoBehaviour
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
         inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
+        
         audiosource.PlayOneShot(useSword);
         hasSword = 1;
         saveData();

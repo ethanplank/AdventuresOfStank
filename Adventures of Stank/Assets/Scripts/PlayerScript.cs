@@ -30,9 +30,21 @@ public class PlayerScript : MonoBehaviour
     private float swordCooldown;
     Boolean isSwinging = false;
     Boolean isShooting = false;
+
+    public Transform attackPoint;
+    public float swordRange = 0.5f;
+    public LayerMask enemyLayer;
+    private float swordDelay;
+    public bool activeSword;
     // Start is called before the first frame update
     void Start()
     {
+        swordDelay = Time.time;
+        activeSword = false;
+        if (msm.hasSword == 1)
+        {
+            activeSword = true;
+        }
         _rbody = GetComponent<Rigidbody2D>();
         swordCooldown = Time.time;
         
@@ -45,15 +57,34 @@ public class PlayerScript : MonoBehaviour
         checkSkin();
         _rbody.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
         checkDirection();
-        if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time>swordCooldown+1 &&!isShooting)
+        if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time>swordCooldown+1 &&!isShooting
+            && Time.time > swordDelay + 1)
         {
             isSwinging = true;
             msm.playSwordSound();
             swordCooldown = Time.time;
+            if(activeSword)
+            {
+                sAttack();
+                swordDelay = Time.time;
+            }
         }
         changeSkin();
+        
 
 
+    }
+    public void sAttack()
+    {
+        //Attack Animation
+        //Detect enemies in range
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, swordRange, enemyLayer);
+        //Enemy damage
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<RobotScript>().TakeDamage(5);
+
+        }
     }
     private void FixedUpdate()
     {
@@ -82,7 +113,7 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.gameObject.tag == "SwordStone")
         {
-            
+            activeSword = true;
             msm.PullSword();            
         }
         if (collision.gameObject.tag == "ShopDoor")
