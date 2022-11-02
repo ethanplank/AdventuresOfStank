@@ -23,7 +23,7 @@ public class GameOverScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 4)
+        if (SceneManager.GetActiveScene().buildIndex == 4 ||SceneManager.GetActiveScene().buildIndex==6)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
