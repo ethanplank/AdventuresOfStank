@@ -30,6 +30,7 @@ public class MSM : MonoBehaviour
     private float timeStamp;
     private float swordDelay;
     public int hasSword;
+    public int hasGun;
     private Inventory inventory;
 
     private AudioSource audiosource;
@@ -50,8 +51,10 @@ public class MSM : MonoBehaviour
             PlayerPrefs.SetInt("Gems", 0);
             PlayerPrefs.SetInt("HasSword", 0);
             PlayerPrefs.SetInt("Hearts", 6);
+            PlayerPrefs.SetInt("HasGun", 0);
         }
         hasSword = 0;
+        hasGun = 0;
        
         loadData();
         UI_Inventory.SetInventory(inventory);
@@ -69,10 +72,11 @@ public class MSM : MonoBehaviour
             PlayerPrefs.SetInt("Gems", 0);
             PlayerPrefs.SetInt("HasSword", 0);
             PlayerPrefs.SetInt("Hearts", 6);
+            PlayerPrefs.SetInt("HasGun", 0);
             UnityEditor.EditorApplication.isPlaying = false;
 
         }
-        if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown)
+        if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown && hasGun == 1)
         {
             shootLaser();
             player.shootGun();
@@ -97,12 +101,14 @@ public class MSM : MonoBehaviour
         PlayerPrefs.SetInt("Gems", gems);
         PlayerPrefs.SetInt("Hearts", numHearts);
         PlayerPrefs.SetInt("HasSword", hasSword);
+        PlayerPrefs.SetInt("HasGun", hasGun);
     }
     private void loadData()
     {
         gems = PlayerPrefs.GetInt("Gems");
         numHearts = PlayerPrefs.GetInt("Hearts");
         hasSword = PlayerPrefs.GetInt("HasSword");
+        hasGun = PlayerPrefs.GetInt("HasGun");
         changeHearts();
         gemText.text = "= " + gems.ToString();
         if (hasSword == 1)
@@ -134,10 +140,16 @@ public class MSM : MonoBehaviour
     {
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
-        inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
+        inventory.addSword();
         
         //audiosource.PlayOneShot(useSword);
         hasSword = 1;
+        saveData();
+    }
+    public void PullGun()
+    {
+        inventory.addGun();
+        hasGun = 1;
         saveData();
     }
     private void changeHearts()
