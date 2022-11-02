@@ -78,10 +78,18 @@ public class MSM : MonoBehaviour
             audiosource.PlayOneShot(laserShot);
             timeStamp = Time.time;
         }
+        if(SceneManager.GetActiveScene().buildIndex==4)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                print("Here");
+                SceneManager.LoadScene(0);
+            }
+
+        }
 
 
-
-        if(SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             if (Input.GetKeyDown(KeyCode.P) && numHearts<5 && gems>=15){
                 gems -= 15;
@@ -174,14 +182,22 @@ public class MSM : MonoBehaviour
         if (numHearts >= 1)
         {
             numHearts -= 1;
+            player.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            Invoke("Invincibility", 1);
+
         }
         else
         {
             PlayerPrefs.SetInt("Gems", 0);
             PlayerPrefs.SetInt("Hearts", 6);
-            UnityEditor.EditorApplication.isPlaying = false;
+            SceneManager.LoadScene(4);
 
         }
+    }
+    public void Invincibility()
+    {
+        player.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
     }
     public void purchase()
     {
