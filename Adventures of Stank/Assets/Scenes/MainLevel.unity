@@ -11006,6 +11006,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 166130696}
     - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
+      propertyPath: swordRange
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: attackPoint
       value: 
       objectReference: {fileID: 1404711452}

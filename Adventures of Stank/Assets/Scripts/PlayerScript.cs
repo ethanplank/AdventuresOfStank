@@ -40,7 +40,11 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         swordDelay = Time.time;
-        activeSword = true;
+        activeSword = false;
+        if (msm.hasSword == 1)
+        {
+            activeSword = true;
+        }
         _rbody = GetComponent<Rigidbody2D>();
         swordCooldown = Time.time;
         
@@ -78,7 +82,7 @@ public class PlayerScript : MonoBehaviour
         //Enemy damage
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<RobotScript>().TakeDamage(10);
+            enemy.GetComponent<RobotScript>().TakeDamage(5);
 
         }
     }
@@ -109,7 +113,7 @@ public class PlayerScript : MonoBehaviour
         }
         if(collision.gameObject.tag == "SwordStone")
         {
-            
+            activeSword = true;
             msm.PullSword();            
         }
         if (collision.gameObject.tag == "ShopDoor")
