@@ -162,12 +162,14 @@ public class MSM : MonoBehaviour
         
         //audiosource.PlayOneShot(useSword);
         hasSword = 1;
+        UI_Inventory.SetInventory(inventory);
         saveData();
     }
     public void PullGun()
     {
         inventory.addGun();
         hasGun = 1;
+        UI_Inventory.SetInventory(inventory);
         saveData();
     }
     private void changeHearts()
