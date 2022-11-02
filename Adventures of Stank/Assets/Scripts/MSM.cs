@@ -136,6 +136,12 @@ public class MSM : MonoBehaviour
         }
         loadData();
     }
+    public void hitGunDoor()
+    {
+        saveData();
+        SceneManager.LoadScene(2);
+        loadData();
+    }
     public void PullSword()
     {
         //Enter code for animation of pulling sword out here.

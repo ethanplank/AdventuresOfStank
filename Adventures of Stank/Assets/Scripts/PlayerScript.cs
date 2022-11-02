@@ -111,7 +111,11 @@ public class PlayerScript : MonoBehaviour
         {
             msm.hitSwordDoor();
         }
-        if(collision.gameObject.tag == "SwordStone")
+        if (collision.gameObject.tag == "GunDoor")
+        {
+            msm.hitGunDoor();
+        }
+        if (collision.gameObject.tag == "SwordStone")
         {
             activeSword = true;
             msm.PullSword();            

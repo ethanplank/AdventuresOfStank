@@ -15,6 +15,7 @@ TagManager:
   - shopTable
   - Bullet
   - Part
+  - GunDoor
   layers:
   - Default
   - TransparentFX
