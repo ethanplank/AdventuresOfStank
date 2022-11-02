@@ -115,6 +115,10 @@ public class MSM : MonoBehaviour
         {
             inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
         }
+        if (hasGun == 1)
+        {
+            inventory.addGun();
+        }
     }
 
     public void hitDoor()
@@ -139,7 +143,15 @@ public class MSM : MonoBehaviour
     public void hitGunDoor()
     {
         saveData();
-        SceneManager.LoadScene(5);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(5);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            SceneManager.LoadScene(1);
+        }
+        
         loadData();
     }
     public void PullSword()

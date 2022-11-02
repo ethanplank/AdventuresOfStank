@@ -16,6 +16,7 @@ TagManager:
   - Bullet
   - Part
   - GunDoor
+  - GunHolster
   layers:
   - Default
   - TransparentFX

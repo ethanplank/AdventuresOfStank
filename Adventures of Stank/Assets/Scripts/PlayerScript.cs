@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D _rbody;
-   public MSM msm;
+    public MSM msm;
     int speed = 5;
     public Animator animate;
 
@@ -36,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     public LayerMask enemyLayer;
     private float swordDelay;
     public bool activeSword;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class PlayerScript : MonoBehaviour
         {
             activeSword = true;
         }
+       
         _rbody = GetComponent<Rigidbody2D>();
         swordCooldown = Time.time;
         
@@ -119,6 +122,10 @@ public class PlayerScript : MonoBehaviour
         {
             activeSword = true;
             msm.PullSword();            
+        }
+        if (collision.gameObject.tag == "GunHolster")
+        {
+            msm.PullGun();
         }
         if (collision.gameObject.tag == "ShopDoor")
         {
