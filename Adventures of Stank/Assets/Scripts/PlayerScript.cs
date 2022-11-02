@@ -93,6 +93,10 @@ public class PlayerScript : MonoBehaviour
         {
             msm.purchase();
         }
+        if (collision.gameObject.tag == "Part")
+        {
+            Destroy(collision.gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

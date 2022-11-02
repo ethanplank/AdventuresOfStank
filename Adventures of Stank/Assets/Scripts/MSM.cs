@@ -78,15 +78,7 @@ public class MSM : MonoBehaviour
             audiosource.PlayOneShot(laserShot);
             timeStamp = Time.time;
         }
-        if(SceneManager.GetActiveScene().buildIndex==4)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                print("Here");
-                SceneManager.LoadScene(0);
-            }
-
-        }
+       
 
 
         if (SceneManager.GetActiveScene().buildIndex == 3)
