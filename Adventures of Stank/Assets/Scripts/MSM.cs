@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class MSM : MonoBehaviour
 {
@@ -52,12 +53,35 @@ public class MSM : MonoBehaviour
             PlayerPrefs.SetInt("HasSword", 0);
             PlayerPrefs.SetInt("Hearts", 6);
             PlayerPrefs.SetInt("HasGun", 0);
+            PlayerPrefs.SetInt("Spawn", 0);
         }
         hasSword = 0;
         hasGun = 0;
        
         loadData();
         UI_Inventory.SetInventory(inventory);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (PlayerPrefs.GetInt("Spawn") == 0)
+            {
+                player.gameObject.transform.position = new Vector3(-4, -1, 0);
+            }
+            if (PlayerPrefs.GetInt("Spawn") == 1)
+            {
+                player.gameObject.transform.position = new Vector3(1, 2, 0);
+
+            }
+            if (PlayerPrefs.GetInt("Spawn") == 2)
+            {
+                player.gameObject.transform.position = new Vector3(2, -9, 0);
+
+            }
+            if (PlayerPrefs.GetInt("Spawn") == 3)
+            {
+                player.gameObject.transform.position = new Vector3(3, -18, 0);
+
+            }
+        }
     }
     
     // Update is called once per frame
@@ -69,6 +93,7 @@ public class MSM : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            PlayerPrefs.SetInt("Spawn", 0);
             PlayerPrefs.SetInt("Gems", 0);
             PlayerPrefs.SetInt("HasSword", 0);
             PlayerPrefs.SetInt("Hearts", 6);
@@ -129,6 +154,7 @@ public class MSM : MonoBehaviour
     }
     public void hitSwordDoor()
     {
+        PlayerPrefs.SetInt("Spawn", 1);
         saveData();
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -142,6 +168,7 @@ public class MSM : MonoBehaviour
     }
     public void hitGunDoor()
     {
+        PlayerPrefs.SetInt("Spawn", 3);
         saveData();
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -214,6 +241,7 @@ public class MSM : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetInt("Spawn", 0);
             PlayerPrefs.SetInt("Gems", 0);
             PlayerPrefs.SetInt("Hearts", 6);
             SceneManager.LoadScene(4);
@@ -236,6 +264,7 @@ public class MSM : MonoBehaviour
     }
     public void openShop()
     {
+        PlayerPrefs.SetInt("Spawn", 2);
         saveData();
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
