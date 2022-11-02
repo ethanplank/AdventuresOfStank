@@ -5313,6 +5313,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: part1
+      value: 
+      objectReference: {fileID: 3208295335827523220, guid: c08349e26682c3648baeecb863a04cf5, type: 3}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: part2
+      value: 
+      objectReference: {fileID: 3208295335827523220, guid: c08349e26682c3648baeecb863a04cf5, type: 3}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: part3
+      value: 
+      objectReference: {fileID: 3208295335827523220, guid: c08349e26682c3648baeecb863a04cf5, type: 3}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: part4
+      value: 
+      objectReference: {fileID: 3208295335827523220, guid: c08349e26682c3648baeecb863a04cf5, type: 3}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: part5
+      value: 
+      objectReference: {fileID: 3208295335827523220, guid: c08349e26682c3648baeecb863a04cf5, type: 3}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 135630248}

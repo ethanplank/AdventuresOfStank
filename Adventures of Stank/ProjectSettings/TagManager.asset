@@ -14,9 +14,13 @@ TagManager:
   - ShopDoor
   - shopTable
   - Bullet
-  - Part
   - GunDoor
   - GunHolster
+  - Part1
+  - Part2
+  - Part3
+  - Part4
+  - Part5
   layers:
   - Default
   - TransparentFX

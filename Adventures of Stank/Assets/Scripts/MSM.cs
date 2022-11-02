@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -34,6 +33,12 @@ public class MSM : MonoBehaviour
     public int hasGun;
     private Inventory inventory;
 
+    public GameObject part1;
+    public GameObject part2;
+    public GameObject part3;
+    public GameObject part4;
+    public GameObject part5;
+
     private AudioSource audiosource;
     public AudioClip heartGain;
     public AudioClip laserShot;
@@ -47,14 +52,7 @@ public class MSM : MonoBehaviour
         timeStamp = Time.time;
         inventory = new Inventory();
         audiosource = gameObject.GetComponent<AudioSource>();
-        if ((SceneManager.GetActiveScene().buildIndex == 0))
-        {
-            PlayerPrefs.SetInt("Gems", 0);
-            PlayerPrefs.SetInt("HasSword", 0);
-            PlayerPrefs.SetInt("Hearts", 6);
-            PlayerPrefs.SetInt("HasGun", 0);
-            PlayerPrefs.SetInt("Spawn", 0);
-        }
+       
         hasSword = 0;
         hasGun = 0;
        
@@ -81,24 +79,48 @@ public class MSM : MonoBehaviour
                 player.gameObject.transform.position = new Vector3(3, -18, 0);
 
             }
+           
+
         }
     }
     
     // Update is called once per frame
     void Update()
     {
-
+      
+        print(PlayerPrefs.GetInt("Part1"));
+        if (PlayerPrefs.GetInt("Part1") == 1)
+        {
+            print("its true");
+            part1.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("Part2") == 1)
+        {
+            part2.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("Part3") == 1)
+        {
+            part3.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("Part4") == 1)
+        {
+            part4.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("Part5") == 1)
+        {
+            part5.SetActive(true);
+        }
         changeHearts();
         gemText.text = "= " + gems.ToString();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PlayerPrefs.SetInt("Spawn", 0);
-            PlayerPrefs.SetInt("Gems", 0);
-            PlayerPrefs.SetInt("HasSword", 0);
-            PlayerPrefs.SetInt("Hearts", 6);
-            PlayerPrefs.SetInt("HasGun", 0);
-            UnityEditor.EditorApplication.isPlaying = false;
+           // PlayerPrefs.SetInt("Spawn", 0);
+           // PlayerPrefs.SetInt("Gems", 0);
+           // PlayerPrefs.SetInt("HasSword", 0);
+           // PlayerPrefs.SetInt("Hearts", 6);
+           // PlayerPrefs.SetInt("HasGun", 0);
+           // UnityEditor.EditorApplication.isPlaying = false;
 
         }
         if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown && hasGun == 1)

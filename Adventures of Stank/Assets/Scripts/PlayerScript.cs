@@ -147,16 +147,39 @@ public class PlayerScript : MonoBehaviour
         {
             msm.purchase();
         }
-        if (collision.gameObject.tag == "Part")
-        {
-            Destroy(collision.gameObject);
-        }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Gem")
         {
             msm.addGem();
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Part1" || collision.gameObject.tag =="Part2" 
+            || collision.gameObject.tag == "Part3" || collision.gameObject.tag == "Part4"
+            || collision.gameObject.tag == "Part5")
+        {
+            if(collision.gameObject.tag == "Part1")
+            {
+                PlayerPrefs.SetInt("Part1", 0);
+            }
+            if (collision.gameObject.tag == "Part2")
+            {
+                PlayerPrefs.SetInt("Part2", 0);
+            }
+            if (collision.gameObject.tag == "Part3")
+            {
+                PlayerPrefs.SetInt("Part3", 0);
+            }
+            if (collision.gameObject.tag == "Part4")
+            {
+                PlayerPrefs.SetInt("Part4", 0);
+            }
+            if (collision.gameObject.tag == "Part5")
+            {
+                PlayerPrefs.SetInt("Part5", 0);
+            }
             Destroy(collision.gameObject);
         }
     }

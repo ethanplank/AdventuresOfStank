@@ -10,7 +10,7 @@ public class Inventory
         itemList = new List<Item>();
         
         
-        Debug.Log(itemList.Count);
+       // Debug.Log(itemList.Count);
     }
     public void AddItem(Item item)
     {
