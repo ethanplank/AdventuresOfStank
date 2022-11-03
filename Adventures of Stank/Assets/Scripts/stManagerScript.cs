@@ -18,6 +18,7 @@ public class stManagerScript : MonoBehaviour
     }
     public void OnStartButtonClick()
     {
-        SceneManager.LoadScene("MainLevel");
+        SceneManager.LoadScene(7);
+
     }
 }

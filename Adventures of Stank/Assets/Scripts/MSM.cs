@@ -91,7 +91,6 @@ public class MSM : MonoBehaviour
         print(PlayerPrefs.GetInt("Part1"));
         if (PlayerPrefs.GetInt("Part1") == 1)
         {
-            print("its true");
             part1.SetActive(true);
         }
         if (PlayerPrefs.GetInt("Part2") == 1)

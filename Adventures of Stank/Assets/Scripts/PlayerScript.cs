@@ -295,6 +295,11 @@ public class PlayerScript : MonoBehaviour
             Invoke("TurnOffGun", 1);
         }
     }
+    public void OnParticleCollision(GameObject other)
+    {
+        msm.takeDamage(5);
+    }
+   
     private void TurnOffSword()
     {
         isSwinging = false;
