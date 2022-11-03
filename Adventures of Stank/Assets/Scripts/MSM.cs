@@ -21,7 +21,9 @@ public class MSM : MonoBehaviour
     public Text gemText;
     private int gems;
 
-    public Image currentHeartPic; 
+    public Image currentHeartPic;
+    public Image isSword;
+    public Image isGun;
     public int scene;
 
     public int numHearts;
@@ -79,6 +81,7 @@ public class MSM : MonoBehaviour
                 player.gameObject.transform.position = new Vector3(3, -18, 0);
 
             }
+            
            
 
         }
@@ -170,6 +173,14 @@ public class MSM : MonoBehaviour
         {
             inventory.addGun();
         }
+        if (hasSword == 1)
+        {
+            isSword.gameObject.SetActive(true);
+        }
+        if (hasGun == 1)
+        {
+            isGun.gameObject.SetActive(true);
+        }
     }
 
     public void hitDoor()
@@ -212,7 +223,7 @@ public class MSM : MonoBehaviour
         //Enter code for animation of pulling sword out here.
         //Then add sword to item slot
         inventory.addSword();
-        
+        isSword.gameObject.SetActive(true);
         //audiosource.PlayOneShot(useSword);
         hasSword = 1;
         UI_Inventory.SetInventory(inventory);
@@ -221,6 +232,7 @@ public class MSM : MonoBehaviour
     public void PullGun()
     {
         inventory.addGun();
+        isGun.gameObject.SetActive(true);
         hasGun = 1;
         UI_Inventory.SetInventory(inventory);
         saveData();
