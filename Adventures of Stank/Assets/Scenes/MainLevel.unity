@@ -1179,6 +1179,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3640faa69c7ff6c4b91604701ec69c6f, type: 3}
+--- !u!114 &570613519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1781511475722028697, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+  m_PrefabInstance: {fileID: 1368455641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &575154722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3258,6 +3269,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59fdb6c2a3860a0448ff7caa61fe6dff, type: 3}
+--- !u!114 &1487144846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5253052307082986003, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+  m_PrefabInstance: {fileID: 1368455641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1496157309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40971,6 +40993,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: isGun
+      value: 
+      objectReference: {fileID: 570613519}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
       propertyPath: part1
       value: 
       objectReference: {fileID: 387494711}
@@ -40998,6 +41024,10 @@ PrefabInstance:
       propertyPath: gemText
       value: 
       objectReference: {fileID: 1368455644}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: isSword
+      value: 
+      objectReference: {fileID: 1487144846}
     - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
       propertyPath: destroyRob
       value: 
