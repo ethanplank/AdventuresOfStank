@@ -2826,9 +2826,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2193857778758386543, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
-      propertyPath: m_Text
-      value: Z
+    - target: {fileID: 4021764468418296443, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770768527494833312, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_Name
@@ -3100,7 +3100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  speedx: 4
+  speedy: 3
   msm: {fileID: 166130696}
+  time: 0
 --- !u!1001 &1392080317
 PrefabInstance:
   m_ObjectHideFlags: 0
