@@ -218,7 +218,7 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            direction = "still";
+            direction = direction;
         }
     }
     private void changeSkin()//Changing the animation based on direction
