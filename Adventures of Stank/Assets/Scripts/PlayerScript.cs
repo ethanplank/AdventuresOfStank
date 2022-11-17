@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     Boolean isShooting = false;
 
     public Transform attackPoint;
-    public float swordRange = 0.5f;
+    public float swordRange = 1.0f;
     public LayerMask enemyLayer;
     private float swordDelay;
     public bool activeSword;

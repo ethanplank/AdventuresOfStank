@@ -135,16 +135,7 @@ public class MSM : MonoBehaviour
         changeHearts();
         gemText.text = "= " + gems.ToString();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-           // PlayerPrefs.SetInt("Spawn", 0);
-           // PlayerPrefs.SetInt("Gems", 0);
-           // PlayerPrefs.SetInt("HasSword", 0);
-           // PlayerPrefs.SetInt("Hearts", 6);
-           // PlayerPrefs.SetInt("HasGun", 0);
-           // UnityEditor.EditorApplication.isPlaying = false;
-
-        }
+        
         //Shooting laser
         if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown && hasGun == 1)
         {
