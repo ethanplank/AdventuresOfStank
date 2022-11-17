@@ -15,7 +15,8 @@ public class MSM : MonoBehaviour
     public Sprite threeheart;
 
     public GameObject bulletPrefab;
-
+    public GameObject pauseScreenFade;
+    public GameObject pauseText;
 
     public PlayerScript player;
     public Text gemText;
@@ -90,7 +91,26 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 0)
+            {
+                pauseScreenFade.SetActive(false);
+                pauseText.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                pauseScreenFade.SetActive(true);
+                pauseText.SetActive(true);
+
+                Time.timeScale = 0;
+            }
+        }
         print(PlayerPrefs.GetInt("Part1"));
         if (PlayerPrefs.GetInt("Part1") == 1)
         {
