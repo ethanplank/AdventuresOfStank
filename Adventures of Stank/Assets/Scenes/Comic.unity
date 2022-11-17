@@ -264,9 +264,9 @@ MonoBehaviour:
     terekia.  You have nothing since you lost your trusty saber and laser during
     the crash, and your ship needs parts in order to take off.  Search the planet
     for your weapons, and more importantly for your ship parts to escape.  Beware
-    of the robots, and more importantly; beware the terekians themselves who are
-    immune to your saber.  Legend has it an even greater creature than the terekians
-    lives out there somewhere...
+    of the robots, and more importantly beware the terekians themselves who are immune
+    to your saber.  Legend has it an even greater creature than the terekians lives
+    out there somewhere...
 --- !u!222 &436500786
 CanvasRenderer:
   m_ObjectHideFlags: 0

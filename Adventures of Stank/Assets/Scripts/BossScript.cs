@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
     public int health = 100;
-    public int speedx=4;
+    public int speedx = 4;
     public int speedy = 3;
     public MSM msm;
     public int time = 0;
@@ -14,7 +12,7 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +23,7 @@ public class BossScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         speedx = -speedx;
-        speedy=-speedy;
+        speedy = -speedy;
         if (collision.gameObject.tag == "Player")
         {
             msm.takeDamage(1);
@@ -35,7 +33,7 @@ public class BossScript : MonoBehaviour
         {
             TakeDamage(5);
         }
-       
+
     }
     public void TakeDamage(int damage)
     {

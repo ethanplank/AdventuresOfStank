@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TarekianScript : MonoBehaviour
@@ -21,7 +19,7 @@ public class TarekianScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void FixedUpdate()
     {

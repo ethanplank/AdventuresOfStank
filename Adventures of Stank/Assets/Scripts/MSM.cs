@@ -51,15 +51,15 @@ public class MSM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeStamp = Time.time;
+        timeStamp = Time.time;//Sword cooldown
         inventory = new Inventory();
         audiosource = gameObject.GetComponent<AudioSource>();
        
         hasSword = 0;
-        hasGun = 0;
+        hasGun = 0;//Refreshing variables
        
         loadData();
-        UI_Inventory.SetInventory(inventory);
+        UI_Inventory.SetInventory(inventory);//Resetting inventory, spawn
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (PlayerPrefs.GetInt("Spawn") == 0)
@@ -108,7 +108,7 @@ public class MSM : MonoBehaviour
         {
             part4.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("Part5") == 1)
+        if (PlayerPrefs.GetInt("Part5") == 1)//Checking if parts active
         {
             part5.SetActive(true);
         }
@@ -125,6 +125,7 @@ public class MSM : MonoBehaviour
            // UnityEditor.EditorApplication.isPlaying = false;
 
         }
+        //Shooting laser
         if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown && hasGun == 1)
         {
             shootLaser();
@@ -132,7 +133,7 @@ public class MSM : MonoBehaviour
             audiosource.PlayOneShot(laserShot);
             timeStamp = Time.time;
         }
-       
+       //Changing scenes if all parts collected
         if(PlayerPrefs.GetInt("Part1")==0 && PlayerPrefs.GetInt("Part2")==0 
             && PlayerPrefs.GetInt("Part3")==0 && PlayerPrefs.GetInt("Part4") == 0 
             && PlayerPrefs.GetInt("Part5") == 0)
@@ -140,7 +141,7 @@ public class MSM : MonoBehaviour
             SceneManager.LoadScene(6);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == 3)//Purchasing hearts
         {
             if (Input.GetKeyDown(KeyCode.P) && numHearts<5 && gems>=15){
                 gems -= 15;
@@ -165,7 +166,7 @@ public class MSM : MonoBehaviour
         hasGun = PlayerPrefs.GetInt("HasGun");
         changeHearts();
         gemText.text = "= " + gems.ToString();
-        if (hasSword == 1)
+        if (hasSword == 1)//Checking to see if player has gotten sword
         {
             inventory.AddItem(new Item { itemType = Item.ItemType.LaserSword, amount = 1 });
         }
@@ -241,7 +242,7 @@ public class MSM : MonoBehaviour
     {
         if (numHearts == 6)
         {
-            currentHeartPic.sprite = threeheart;
+            currentHeartPic.sprite = threeheart;//Changing health bar
         }
         else if (numHearts == 5)
         {
@@ -322,7 +323,7 @@ public class MSM : MonoBehaviour
         GameObject bullet;
         //GameObject bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
         shotVector = new Vector2(bulletSpeed, 0);
-        if (player.direction == "north")
+        if (player.direction == "north")//Making laser go correct rotation and direction
         {
              bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, 1), Quaternion.identity);
            
