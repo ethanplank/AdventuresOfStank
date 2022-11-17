@@ -41130,6 +41130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3460354179445489350, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3560989850822795530, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: msm
       value: 
@@ -41156,7 +41160,7 @@ PrefabInstance:
       objectReference: {fileID: 166130696}
     - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: swordRange
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: attackPoint
