@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 46ac9113fa536d24cb440bce288de952
+guid: 1e0746a37c84bf344891e607b353efcd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5614685504268180417
-    second: StankSouthWest_0
+      213: -2516830839609618218
+    second: StankSouthEast (1)_0
   - first:
-      213: -2122497522889575884
-    second: StankSouthWest_1
+      213: 1851544835095902465
+    second: StankSouthEast (1)_1
   - first:
-      213: -6805592859458053284
-    second: StankSouthWest_2
-  - first:
-      213: -3597859993451863694
-    second: StankSouthWest_3
+      213: 4326626203700331987
+    second: StankSouthEast (1)_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -104,7 +101,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StankSouthWest_0
+      name: StankSouthEast (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cb907fd7be5bed40800000000000000
-      internalID: 5614685504268180417
+      spriteID: 6d01255afab621dd0800000000000000
+      internalID: -2516830839609618218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StankSouthWest_1
+      name: StankSouthEast (1)_1
       rect:
         serializedVersion: 2
         x: 352
@@ -139,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43235879fbf5b82e0800000000000000
-      internalID: -2122497522889575884
+      spriteID: 109b995b73202b910800000000000000
+      internalID: 1851544835095902465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StankSouthWest_2
+      name: StankSouthEast (1)_2
       rect:
         serializedVersion: 2
         x: 0
@@ -160,29 +157,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5b51161a5dad81a0800000000000000
-      internalID: -6805592859458053284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StankSouthWest_3
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 352
-        height: 308
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27166b2f565d11ec0800000000000000
-      internalID: -3597859993451863694
+      spriteID: 3d5847bdb934b0c30800000000000000
+      internalID: 4326626203700331987
       vertices: []
       indices: 
       edges: []

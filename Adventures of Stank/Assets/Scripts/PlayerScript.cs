@@ -56,8 +56,16 @@ public class PlayerScript : MonoBehaviour
     {
 
         checkSkin();
-        _rbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
-        checkDirection();
+        if (!isSwinging && !isShooting)
+        {
+            _rbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
+        }
+        else
+        {
+            _rbody.velocity = new Vector2(0, 0);
+        }
+            checkDirection();
+        
         if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time > swordCooldown + 1 && !isShooting
             && Time.time > swordDelay + 1 && msm.hasSword == 1)
         {
