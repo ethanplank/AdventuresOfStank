@@ -21,6 +21,7 @@ public class MSM : MonoBehaviour
     public PlayerScript player;
     public Text gemText;
     private int gems;
+    public Text caveText;
 
     public Image currentHeartPic;
     public Image isSword;
@@ -414,5 +415,14 @@ public class MSM : MonoBehaviour
     public void playSwordSound()
     {
         audiosource.PlayOneShot(useSword);
+    }
+
+    public void displaySignText()
+    {
+        caveText.gameObject.SetActive(true);
+    }
+    public void hideSignText()
+    {
+        caveText.gameObject.SetActive(false);
     }
 }

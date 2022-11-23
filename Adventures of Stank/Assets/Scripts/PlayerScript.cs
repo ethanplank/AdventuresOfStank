@@ -145,7 +145,18 @@ public class PlayerScript : MonoBehaviour
         {
             msm.purchase();
         }
+        if (collision.gameObject.tag == "Sign")
+        {
+            msm.displaySignText();
+        }
 
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Sign")
+        {
+            msm.hideSignText();
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

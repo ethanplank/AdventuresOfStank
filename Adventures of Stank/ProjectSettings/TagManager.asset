@@ -22,6 +22,7 @@ TagManager:
   - Part4
   - Part5
   - Part
+  - Sign
   layers:
   - Default
   - TransparentFX
