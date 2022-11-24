@@ -19,17 +19,17 @@ public class PlayerScript : MonoBehaviour
     const string south = "RunForward";
     const string east = "StankMoveRight";
     const string west = "StankMoveLeft";
-    const string idle = "StankStationary";
+    
+
     const string sword = "StankSword";
     const string gunRight = "StankGunRight";
     const string gunLeft = "StankGunLeft";
     const string gunForward = "StankGunForward";
     public string direction;
-
     private float swordCooldown;
     Boolean isSwinging = false;
     Boolean isShooting = false;
-
+    Boolean idle = true;
     public Transform attackPoint;
     public float swordRange = 1.0f;
     public LayerMask enemyLayer;
@@ -206,44 +206,63 @@ public class PlayerScript : MonoBehaviour
         if (_rbody.velocity.x > 0 && _rbody.velocity.y == 0)
         {
             direction = "east";
+            idle = false;
         }
         else if (_rbody.velocity.x > 0 && _rbody.velocity.y > 0)
         {
             direction = "northeast";
+            idle = false;
         }
         else if (_rbody.velocity.x > 0 && _rbody.velocity.y < 0)
         {
-            direction = "southeast";
+            direction = "southeast"; 
+            idle = false;
+
         }
         else if (_rbody.velocity.x < 0 && _rbody.velocity.y > 0)
         {
             direction = "northwest";
+            idle = false;
+
         }
         else if (_rbody.velocity.x < 0 && _rbody.velocity.y < 0)
         {
             direction = "southwest";
+            idle = false;
+
+
         }
         else if (_rbody.velocity.x < 0 && _rbody.velocity.y == 0)
         {
             direction = "west";
+            idle = false;
+
+
         }
         else if (_rbody.velocity.x == 0 && _rbody.velocity.y > 0)
         {
             direction = "north";
+            idle = false;
+
+
         }
         else if (_rbody.velocity.x == 0 && _rbody.velocity.y < 0)
         {
             direction = "south";
+            idle = false;
+
+
         }
         else
         {
-            direction = direction;
+            idle = true;
         }
     }
     private void changeSkin()//Changing the animation based on direction
     {
         if (!isSwinging && !isShooting)
         {
+            animate.speed = 1;
             if (direction == "west")
             {
                 animate.Play(west);
@@ -286,9 +305,9 @@ public class PlayerScript : MonoBehaviour
                 animate.Play(northwest);
 
             }
-            else
+            if(idle)//Freeze in place if not moving
             {
-                animate.Play(idle);
+                animate.speed = 0;  
             }
         }
         else if (!isShooting)
