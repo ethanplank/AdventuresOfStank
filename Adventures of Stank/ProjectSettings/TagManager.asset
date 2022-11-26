@@ -23,6 +23,7 @@ TagManager:
   - Part5
   - Part
   - Sign
+  - Enemy
   layers:
   - Default
   - TransparentFX

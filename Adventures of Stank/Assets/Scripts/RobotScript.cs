@@ -39,19 +39,12 @@ public class RobotScript : MonoBehaviour
         }
         
     }
-    public void stopAttack()
-    {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        Invoke("Invincibility", 1);
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
          if (collision.gameObject.tag == "Player")
         {
             msm.takeDamage(1);
-
-            stopAttack();
-
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -74,9 +67,5 @@ public class RobotScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    public void Invincibility()
-    {
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
-
-    }
+   
 }
