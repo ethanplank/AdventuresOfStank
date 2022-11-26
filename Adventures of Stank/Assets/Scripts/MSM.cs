@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -280,20 +281,14 @@ public class MSM : MonoBehaviour
         }
         
     }
-    private void ColorChange()
-    {
-        player.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);  
-
-    }
+ 
     public void takeDamage(int damage)
     {
         audiosource.PlayOneShot(getHurt);
         if (numHearts >= 1)
         {
             numHearts -= 1;
-            player.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .5f);
-           Invoke("ColorChange", 1);
-
+            player.getHit();
         }
         else
         {

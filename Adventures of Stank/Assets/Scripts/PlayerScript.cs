@@ -30,6 +30,7 @@ public class PlayerScript : MonoBehaviour
     Boolean isSwinging = false;
     Boolean isShooting = false;
     Boolean idle = true;
+    public GameObject StankTrigger;
     public Transform attackPoint;
     public float swordRange = 1.0f;
     public LayerMask enemyLayer;
@@ -334,11 +335,23 @@ public class PlayerScript : MonoBehaviour
             Invoke("TurnOffGun", 1);
         }
     }
-    public void OnParticleCollision(GameObject other)
+   public void getHit()
     {
-        msm.takeDamage(5);
-    }
+        gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .5f);
 
+        StankTrigger.SetActive(false);
+        Invoke("TurnOnCollider", 1);
+        Invoke("ColorChange", 1);
+    }
+    private void TurnOnCollider()
+    {
+        StankTrigger.SetActive(true);
+    }
+    private void ColorChange()
+    {
+        gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);
+
+    }
     private void TurnOffSword()
     {
         isSwinging = false;
