@@ -45,6 +45,9 @@ public class RobotScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             msm.takeDamage(1);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            Invoke("Invincibility", 1);
+
 
         }
         if (collision.gameObject.tag == "Bullet")
@@ -63,5 +66,10 @@ public class RobotScript : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+    }
+    public void Invincibility()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
     }
 }

@@ -280,14 +280,19 @@ public class MSM : MonoBehaviour
         }
         
     }
+    private void ColorChange()
+    {
+        player.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);  
+
+    }
     public void takeDamage(int damage)
     {
         audiosource.PlayOneShot(getHurt);
         if (numHearts >= 1)
         {
             numHearts -= 1;
-            player.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            Invoke("Invincibility", 1);
+            player.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .5f);
+           Invoke("ColorChange", 1);
 
         }
         else
@@ -299,11 +304,7 @@ public class MSM : MonoBehaviour
 
         }
     }
-    public void Invincibility()
-    {
-        player.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-
-    }
+   
     public void purchase()
     {
         if (numHearts<3 && gems>=15)
