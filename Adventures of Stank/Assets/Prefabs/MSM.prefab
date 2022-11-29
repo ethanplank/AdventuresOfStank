@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c7c00e855c704eb607fdde895a07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zeroHeart: {fileID: 4087902499683040660, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
   halfHeart: {fileID: -7804976103601320956, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
   oneheart: {fileID: -1282028949759391110, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
   oneandhalfheart: {fileID: -3882053127103361556, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}

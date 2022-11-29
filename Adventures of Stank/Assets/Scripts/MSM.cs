@@ -8,6 +8,7 @@ using UnityEngine.VFX;
 
 public class MSM : MonoBehaviour
 {
+    public Sprite zeroHeart;
     public Sprite halfHeart;
     public Sprite oneheart;
     public Sprite oneandhalfheart;
@@ -113,7 +114,6 @@ public class MSM : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
-        print(PlayerPrefs.GetInt("Part1"));
         if (PlayerPrefs.GetInt("Part1") == 1)
         {
             part1.SetActive(true);
@@ -232,6 +232,7 @@ public class MSM : MonoBehaviour
         
         loadData();
     }
+    //TODO: pull sword animation
     public void PullSword()
     {
         //Enter code for animation of pulling sword out here.
@@ -243,6 +244,7 @@ public class MSM : MonoBehaviour
         UI_Inventory.SetInventory(inventory);
         saveData();
     }
+    //TODO: pull gun animation
     public void PullGun()
     {
         inventory.addGun();
@@ -275,11 +277,15 @@ public class MSM : MonoBehaviour
         {
             currentHeartPic.sprite = oneheart;
         }
-        else
+        else if(numHearts == 1)
         {
             currentHeartPic.sprite = halfHeart;
+        }else
+        {
+            currentHeartPic.sprite = zeroHeart;
+
         }
-        
+
     }
  
     public void takeDamage(int damage)
