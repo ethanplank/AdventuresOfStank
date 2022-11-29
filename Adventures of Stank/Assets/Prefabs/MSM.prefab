@@ -43,19 +43,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c7c00e855c704eb607fdde895a07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  halfHeart: {fileID: 21300000, guid: e2bc0f4c26fef7c498afa2457034455d, type: 3}
-  oneheart: {fileID: 21300000, guid: 79980639767d5644e9bd3617bc2eb58d, type: 3}
-  oneandhalfheart: {fileID: 21300000, guid: 07ea119fbdb703846813ede7e0b9673f, type: 3}
-  twoheart: {fileID: 21300000, guid: 65b9087ddb7831d4d861935cbf1035a9, type: 3}
-  twoandhalfheart: {fileID: 21300000, guid: 8daac6ed35dfebc40be5953c2e3013bf, type: 3}
-  threeheart: {fileID: 21300000, guid: ef9ebb4df3774f748baae9069c58e1dd, type: 3}
-  bulletPrefab: {fileID: 0}
+  halfHeart: {fileID: -7804976103601320956, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
+  oneheart: {fileID: -1282028949759391110, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
+  oneandhalfheart: {fileID: -3882053127103361556, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
+  twoheart: {fileID: 9125734719026464968, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
+  twoandhalfheart: {fileID: -5580502726312144557, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
+  threeheart: {fileID: 1980182729521229033, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
+  bulletPrefab: {fileID: 7263273335872378831, guid: d6ba84d11ec6b9e4dbc92dba5880669e, type: 3}
+  pauseScreenFade: {fileID: 0}
+  pauseText: {fileID: 0}
   player: {fileID: 0}
   gemText: {fileID: 0}
+  caveText: {fileID: 0}
   currentHeartPic: {fileID: 0}
+  isSword: {fileID: 0}
+  isGun: {fileID: 0}
   scene: 0
   numHearts: 0
   hasSword: 0
+  hasGun: 0
+  part1: {fileID: 0}
+  part2: {fileID: 0}
+  part3: {fileID: 0}
+  part4: {fileID: 0}
+  part5: {fileID: 0}
   heartGain: {fileID: 8300000, guid: 7b32c874a31d9e54f84700f5cf56a4fb, type: 3}
   laserShot: {fileID: 8300000, guid: 234051f8c925a604183986456a594a1e, type: 3}
   getHurt: {fileID: 8300000, guid: 527c7f8500a27db4fa87975ddc40661d, type: 3}

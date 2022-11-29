@@ -156,7 +156,7 @@ public class MSM : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 3)//Purchasing hearts
         {
-            if (Input.GetKeyDown(KeyCode.P) && numHearts<5 && gems>=15){
+            if (Input.GetKeyDown(KeyCode.B) && numHearts<5 && gems>=15){
                 gems -= 15;
                 numHearts+=2;
                 audiosource.PlayOneShot(heartGain);
