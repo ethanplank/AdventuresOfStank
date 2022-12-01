@@ -70,6 +70,8 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time > swordCooldown + 1 && !isShooting
             && Time.time > swordDelay + 1 && msm.hasSword == 1)
         {
+            _rbody.velocity = new Vector2(0, 0);
+            print("Time:" + swordCooldown);
             isSwinging = true;
             msm.playSwordSound();
             swordCooldown = Time.time;
@@ -105,6 +107,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void shootGun()
     {
+        _rbody.velocity = new Vector2(0, 0);
         isShooting = true;
     }
     private void checkSkin()
