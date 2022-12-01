@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,8 +18,8 @@ public class CrawlScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y +1, -11);
-       
+        transform.position = new Vector3(transform.position.x, transform.position.y + 1, -11);
+
     }
     void ChangeScene()
     {

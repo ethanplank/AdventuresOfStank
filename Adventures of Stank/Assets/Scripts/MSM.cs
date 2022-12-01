@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.VFX;
 
 public class MSM : MonoBehaviour
 {
@@ -32,7 +28,7 @@ public class MSM : MonoBehaviour
 
     public int numHearts;
 
-    private int cooldown =1;
+    private int cooldown = 1;
     private float timeStamp;
     private float swordDelay;
     public int hasSword;
@@ -58,10 +54,10 @@ public class MSM : MonoBehaviour
         timeStamp = Time.time;//Sword cooldown
         inventory = new Inventory();
         audiosource = gameObject.GetComponent<AudioSource>();
-       
+
         hasSword = 0;
         hasGun = 0;//Refreshing variables
-       
+
         loadData();
         UI_Inventory.SetInventory(inventory);//Resetting inventory, spawn
         if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -85,20 +81,20 @@ public class MSM : MonoBehaviour
                 player.gameObject.transform.position = new Vector3(3, -18, 0);
 
             }
-            
-           
+
+
 
         }
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))//Quit
         {
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))//Pause
         {
             if (Time.timeScale == 0)
             {
@@ -137,18 +133,17 @@ public class MSM : MonoBehaviour
         changeHearts();
         gemText.text = "= " + gems.ToString();
 
-        
+
         //Shooting laser
-        if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp+ cooldown && hasGun == 1)
+        if (Input.GetKeyDown(KeyCode.Z) && Time.time > timeStamp + cooldown && hasGun == 1)
         {
-            shootLaser();
-            player.shootGun();
-            audiosource.PlayOneShot(laserShot);
-            timeStamp = Time.time;
+            //shootLaser();
+            //player.shootGun();
+           // timeStamp = Time.time;
         }
-       //Changing scenes if all parts collected
-        if(PlayerPrefs.GetInt("Part1")==0 && PlayerPrefs.GetInt("Part2")==0 
-            && PlayerPrefs.GetInt("Part3")==0 && PlayerPrefs.GetInt("Part4") == 0 
+        //Changing scenes if all parts collected
+        if (PlayerPrefs.GetInt("Part1") == 0 && PlayerPrefs.GetInt("Part2") == 0
+            && PlayerPrefs.GetInt("Part3") == 0 && PlayerPrefs.GetInt("Part4") == 0
             && PlayerPrefs.GetInt("Part5") == 0)
         {
             SceneManager.LoadScene(6);
@@ -156,9 +151,10 @@ public class MSM : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 3)//Purchasing hearts
         {
-            if (Input.GetKeyDown(KeyCode.B) && numHearts<5 && gems>=15){
+            if (Input.GetKeyDown(KeyCode.B) && numHearts < 5 && gems >= 15)
+            {
                 gems -= 15;
-                numHearts+=2;
+                numHearts += 2;
                 audiosource.PlayOneShot(heartGain);
                 changeHearts();
             }
@@ -211,7 +207,7 @@ public class MSM : MonoBehaviour
         {
             SceneManager.LoadScene(2);
         }
-        if(SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             SceneManager.LoadScene(1);
         }
@@ -229,7 +225,7 @@ public class MSM : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
-        
+
         loadData();
     }
     //TODO: pull sword animation
@@ -277,17 +273,18 @@ public class MSM : MonoBehaviour
         {
             currentHeartPic.sprite = oneheart;
         }
-        else if(numHearts == 1)
+        else if (numHearts == 1)
         {
             currentHeartPic.sprite = halfHeart;
-        }else
+        }
+        else
         {
             currentHeartPic.sprite = zeroHeart;
 
         }
 
     }
- 
+
     public void takeDamage(int damage)
     {
         audiosource.PlayOneShot(getHurt);
@@ -305,10 +302,10 @@ public class MSM : MonoBehaviour
 
         }
     }
-   
+
     public void purchase()
     {
-        if (numHearts<3 && gems>=15)
+        if (numHearts < 3 && gems >= 15)
         {
             numHearts++;
             gems -= 15;
@@ -332,6 +329,8 @@ public class MSM : MonoBehaviour
 
     public void shootLaser()
     {
+        audiosource.PlayOneShot(laserShot);
+
         Vector2 shotVector;
         int bulletSpeed = 7;
         GameObject bullet;
@@ -339,15 +338,15 @@ public class MSM : MonoBehaviour
         shotVector = new Vector2(bulletSpeed, 0);
         if (player.direction == "north")//Making laser go correct rotation and direction
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, 1), Quaternion.identity);
-           
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, 1), Quaternion.identity);
+
             shotVector = new Vector2(0, bulletSpeed);
             bullet.GetComponent<Rigidbody2D>().rotation = 90;
 
         }
         else if (player.direction == "south")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, -1), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(0, -1), Quaternion.identity);
 
             shotVector = new Vector2(0, -bulletSpeed);
             bullet.GetComponent<Rigidbody2D>().rotation = 90;
@@ -355,19 +354,19 @@ public class MSM : MonoBehaviour
         }
         else if (player.direction == "west")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, 0), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, 0), Quaternion.identity);
 
             shotVector = new Vector2(-bulletSpeed, 0);
         }
         else if (player.direction == "east")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 0), Quaternion.identity);
 
             shotVector = new Vector2(bulletSpeed, 0);
         }
         else if (player.direction == "northwest")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, 1), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, 1), Quaternion.identity);
 
             shotVector = new Vector2(-bulletSpeed, bulletSpeed);
             bullet.GetComponent<Rigidbody2D>().rotation = -45;
@@ -375,7 +374,7 @@ public class MSM : MonoBehaviour
         }
         else if (player.direction == "northeast")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1 ,1), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, 1), Quaternion.identity);
 
             shotVector = new Vector2(bulletSpeed, bulletSpeed);
             bullet.GetComponent<Rigidbody2D>().rotation = 45;
@@ -383,7 +382,7 @@ public class MSM : MonoBehaviour
         }
         else if (player.direction == "southwest")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, -1), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(-1, -1), Quaternion.identity);
 
             shotVector = new Vector2(-bulletSpeed, -bulletSpeed);
             bullet.GetComponent<Rigidbody2D>().rotation = 45;
@@ -391,7 +390,7 @@ public class MSM : MonoBehaviour
         }
         else if (player.direction == "southeast")
         {
-             bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, -1), Quaternion.identity);
+            bullet = Instantiate(bulletPrefab, player.GetComponent<Rigidbody2D>().position + new Vector2(1, -1), Quaternion.identity);
 
             shotVector = new Vector2(bulletSpeed, -bulletSpeed);
             bullet.GetComponent<Rigidbody2D>().rotation = -45;
@@ -413,7 +412,7 @@ public class MSM : MonoBehaviour
         audiosource.PlayOneShot(getGem);
         gems++;
     }
-   
+
     public void playSwordSound()
     {
         audiosource.PlayOneShot(useSword);

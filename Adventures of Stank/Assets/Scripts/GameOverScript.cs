@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +21,7 @@ public class GameOverScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 4 ||SceneManager.GetActiveScene().buildIndex==6)
+        if (SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 6)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -34,10 +32,10 @@ public class GameOverScript : MonoBehaviour
             }
 
         }
-        
-            
-           // UnityEditor.EditorApplication.isPlaying = false;
 
-        
+
+        // UnityEditor.EditorApplication.isPlaying = false;
+
+
     }
 }

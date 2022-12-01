@@ -1,15 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class Inventory 
+public class Inventory
 {
     private List<Item> itemList;
     //Creates a new list that contains the items in Stank's inventory
     public Inventory()
     {
-        itemList = new List<Item>();        
-       
+        itemList = new List<Item>();
+
     }
     //Return method for itemList
     public List<Item> GetItemList()

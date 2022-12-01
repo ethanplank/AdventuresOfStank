@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class RobotScript : MonoBehaviour
 {
@@ -37,19 +34,19 @@ public class RobotScript : MonoBehaviour
         {
             _rbody.velocity = Vector3.zero;
         }
-        
+
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-         if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             msm.takeDamage(1);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+
         if (collision.gameObject.tag == "Bullet")
         {
             TakeDamage(5);
@@ -67,5 +64,5 @@ public class RobotScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
-   
+
 }

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Item 
+public class Item
 {
     //Gives distinct types of what Items that can be held in inventory   
-   public enum ItemType
+    public enum ItemType
     {
         LaserSword,
         LaserGun,
@@ -16,7 +14,7 @@ public class Item
     //Returns the sprite that is needed to be displayed from ItemAssets
     public Sprite GetSprite()
     {
-        switch(itemType)
+        switch (itemType)
         {
             default:
             case ItemType.LaserSword: return ItemAssets.Instance.swordSprite;

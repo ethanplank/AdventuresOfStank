@@ -19,78 +19,73 @@ public class PlayerScript : MonoBehaviour
     const string south = "RunForward";
     const string east = "StankMoveRight";
     const string west = "StankMoveLeft";
-    
+
 
     const string sword = "StankSword";
     const string gunRight = "StankGunRight";
     const string gunLeft = "StankGunLeft";
     const string gunForward = "StankGunForward";
+
     public string direction;
-    private float swordCooldown;
-    Boolean isSwinging = false;
-    Boolean isShooting = false;
+    private float weaponCooldown;
+
+    Boolean isAttacking = false;
+   
     Boolean idle = true;
+
     public GameObject StankTrigger;
     public Transform attackPoint;
     public float swordRange = 1.0f;
     public LayerMask enemyLayer;
-    private float swordDelay;
-    public bool activeSword;
 
     // Start is called before the first frame update
     void Start()
     {
-        swordDelay = Time.time;
-        activeSword = false;
-        if (msm.hasSword == 1)
-        {
-            activeSword = true;
-        }
+
 
         _rbody = GetComponent<Rigidbody2D>();
-        swordCooldown = Time.time;
+        weaponCooldown = Time.time;
 
     }
 
     //// Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X) && !isAttacking && Time.time > weaponCooldown + 1
+            && msm.hasSword == 1)
+        {
 
-        checkSkin();
-        if (!isSwinging && !isShooting)
+            sAttack();
+
+        }
+        if (Input.GetKeyDown(KeyCode.Z) && !isAttacking && Time.time > weaponCooldown + 1 && msm.hasGun == 1)
+        {
+            shootGun();
+        }
+        if (!isAttacking)
         {
             _rbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
-        }
-        else
-        {
-            _rbody.velocity = new Vector2(0, 0);
-        }
             checkDirection();
-        
-        if (Input.GetKeyDown(KeyCode.X) && !isSwinging && Time.time > swordCooldown + 1 && !isShooting
-            && Time.time > swordDelay + 1 && msm.hasSword == 1)
-        {
-            _rbody.velocity = new Vector2(0, 0);
-            print("Time:" + swordCooldown);
-            isSwinging = true;
-            msm.playSwordSound();
-            swordCooldown = Time.time;
-            if (activeSword)
-            {
-                //delay for sword
-                sAttack();
-                swordDelay = Time.time;
-            }
-
+            changeSkin();
+           // print(direction + " , " + idle);
         }
-        changeSkin();
+        if(!isAttacking && _rbody.velocity.x==0 && _rbody.velocity.y==0)
+        {
+            animate.speed = 0;
+        }
+        }
 
-
-
-
-    }
     public void sAttack()
     {
+        animate.speed = 0;
+        _rbody.velocity = new Vector2(0, 0);
+        animate.Play(sword);
+        animate.speed = 1;
+        Invoke("TurnOffSword", 1);
+        Invoke("StopAnim", 1);
+        isAttacking = true;
+        msm.playSwordSound();
+        weaponCooldown = Time.time;
         //Attack Animation
         //Detect enemies in range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, swordRange, enemyLayer);
@@ -100,22 +95,32 @@ public class PlayerScript : MonoBehaviour
             enemy.GetComponent<RobotScript>().TakeDamage(10);
 
         }
-    }
-    private void FixedUpdate()
-    {
 
+    }
+    private void StopAnim()
+    {
+        animate.speed = 0;
     }
     public void shootGun()
     {
+        animate.speed = 0;
         _rbody.velocity = new Vector2(0, 0);
-        isShooting = true;
-    }
-    private void checkSkin()
-    {
-        if (msm.hasSword == 1)
+        animate.speed = 1;
+        if (direction == "south" || direction == "still")
         {
-            //Put code here for allowing sword animation
+            animate.Play(gunForward);
         }
+        else if (direction == "west" || direction == "southwest")
+        {
+            animate.Play(gunLeft);
+        }
+        else if (direction == "east" || direction == "southeast")
+        {
+            animate.Play(gunRight);
+        }
+        isAttacking = true;
+        Invoke("TurnOffGun", 1);
+        msm.shootLaser();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -138,8 +143,7 @@ public class PlayerScript : MonoBehaviour
             {
                 msm.PullSword();
             }
-            activeSword = true;
-
+            msm.hasSword = 1;
         }
         if (collision.gameObject.tag == "GunHolster")
         {
@@ -219,7 +223,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if (_rbody.velocity.x > 0 && _rbody.velocity.y < 0)
         {
-            direction = "southeast"; 
+            direction = "southeast";
             idle = false;
 
         }
@@ -257,88 +261,76 @@ public class PlayerScript : MonoBehaviour
 
 
         }
-        else
+        else if(_rbody.velocity.x == 0 && _rbody.velocity.y == 0)
         {
             idle = true;
         }
     }
     private void changeSkin()//Changing the animation based on direction
     {
-        if (!isSwinging && !isShooting)
+        if (direction == "west")
         {
             animate.speed = 1;
-            if (direction == "west")
-            {
-                animate.Play(west);
-            }
-            else if (direction == "east")
-            {
-                animate.Play(east);
-
-            }
-            else if ((direction == "north"))
-            {
-                animate.Play(north);
-
-            }
-            else if (direction == "south")
-            {
-                animate.Play(south);
-
-
-            }
-            else if (direction == "southeast")
-            {
-
-                animate.Play(southeast);
-
-
-            }
-            else if (direction == "southwest")
-            {
-                animate.Play(southwest);
-
-            }
-            else if (direction == "northeast")
-            {
-                animate.Play(northeast);
-
-            }
-            else if (direction == "northwest")
-            {
-                animate.Play(northwest);
-
-            }
-            if(idle)//Freeze in place if not moving
-            {
-                animate.speed = 0;  
-            }
+            animate.Play(west);
         }
-        else if (!isShooting)
+        else if (direction == "east")
         {
-            animate.Play(sword);
-            Invoke("TurnOffSword", 1);//Sword animation
+            animate.speed = 1;
+
+            animate.Play(east);
 
         }
-        else if (!isSwinging)//Gun animation
+        else if ((direction == "north"))
         {
-            if (direction == "south" || direction == "still")
-            {
-                animate.Play(gunForward);
-            }
-            else if (direction == "west" || direction == "southwest")
-            {
-                animate.Play(gunLeft);
-            }
-            else if (direction == "east" || direction == "southeast")
-            {
-                animate.Play(gunRight);
-            }
-            isShooting = true;
-            Invoke("TurnOffGun", 1);
+            animate.speed = 1;
+
+            animate.Play(north);
+
         }
+        else if (direction == "south")
+        {
+            animate.speed = 1;
+
+            animate.Play(south);
+
+
+        }
+        else if (direction == "southeast")
+        {
+            animate.speed = 1;
+
+            animate.Play(southeast);
+
+
+        }
+        else if (direction == "southwest")
+        {
+            animate.speed = 1;
+
+            animate.Play(southwest);
+
+        }
+        else if (direction == "northeast")
+        {
+            animate.speed = 1;
+
+            animate.Play(northeast);
+
+        }
+        else if (direction == "northwest")
+        {
+            animate.speed = 1;
+
+            animate.Play(northwest);
+
+        }else if (idle)
+        {
+            animate.speed = 0;
+        }
+
     }
-   public void getHit()
+   
+    public void getHit()
     {
         gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .5f);
 
@@ -357,10 +349,10 @@ public class PlayerScript : MonoBehaviour
     }
     private void TurnOffSword()
     {
-        isSwinging = false;
+        isAttacking = false;
     }
     private void TurnOffGun()
     {
-        isShooting = false;
+        isAttacking = false;
     }
 }
