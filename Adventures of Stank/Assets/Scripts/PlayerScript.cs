@@ -68,7 +68,7 @@ public class PlayerScript : MonoBehaviour
             checkDirection();
             changeSkin();
            // print(direction + " , " + idle);
-        }
+        }//testing
         if(!isAttacking && _rbody.velocity.x==0 && _rbody.velocity.y==0)
         {
             animate.speed = 0;
