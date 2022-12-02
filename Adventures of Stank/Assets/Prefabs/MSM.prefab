@@ -52,9 +52,9 @@ MonoBehaviour:
   twoandhalfheart: {fileID: -5580502726312144557, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
   threeheart: {fileID: 1980182729521229033, guid: f6c07b942b314884bbd444ada1c37b89, type: 3}
   bulletPrefab: {fileID: 7263273335872378831, guid: d6ba84d11ec6b9e4dbc92dba5880669e, type: 3}
-  pauseScreenFade: {fileID: 0}
-  pauseText: {fileID: 0}
-  player: {fileID: 0}
+  pauseScreenFade: {fileID: 7919519031515313662, guid: 2b10180cb250776469a7eb6f28c7a828, type: 3}
+  pauseText: {fileID: 4726551566742411560, guid: e5ef938d357e23b4092d1e7c5ffdcebe, type: 3}
+  player: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
   gemText: {fileID: 0}
   caveText: {fileID: 0}
   currentHeartPic: {fileID: 0}
