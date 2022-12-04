@@ -26,6 +26,9 @@ public class PlayerScript : MonoBehaviour
     const string gunLeft = "StankGunLeft";
     const string gunForward = "StankGunForward";
 
+    const string pullsword = "StankSwordPull 0";
+
+
     public string direction;
     private float weaponCooldown;
 
@@ -51,6 +54,7 @@ public class PlayerScript : MonoBehaviour
     //// Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.X) && !isAttacking && Time.time > weaponCooldown + 1
             && msm.hasSword == 1)
         {
@@ -141,6 +145,7 @@ public class PlayerScript : MonoBehaviour
 
             if (msm.hasSword == 0)
             {
+                pullSwordAnimation();
                 msm.PullSword();
             }
             msm.hasSword = 1;
@@ -354,5 +359,29 @@ public class PlayerScript : MonoBehaviour
     private void TurnOffGun()
     {
         isAttacking = false;
+    }
+    public void pullSwordAnimation()
+    {
+        animate.speed = 1;
+        
+        isAttacking = true;
+        animate.Play(pullsword);
+        
+
+        Invoke("StopAnim",4);
+        
+        Invoke("TurnOffSword", 4);
+        //Invoke("pullswordptTwo", 3);
+
+    }
+    private void pullswordptTwo()
+    {
+        isAttacking = true;
+        animate.Play(sword);
+
+
+        Invoke("StopAnim", 1);
+
+        Invoke("TurnOffSword", 1);
     }
 }
