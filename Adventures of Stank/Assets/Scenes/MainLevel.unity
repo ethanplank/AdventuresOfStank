@@ -41255,7 +41255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5082975148458933099, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082975148458933099, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5082975148458933099, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41271,7 +41275,7 @@ PrefabInstance:
       objectReference: {fileID: 166130696}
     - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: swordRange
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: attackPoint

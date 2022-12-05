@@ -38,6 +38,8 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject StankTrigger;
     public Transform attackPoint;
+    int x;
+    int y;
     public float swordRange = 1.0f;
     public LayerMask enemyLayer;
 
@@ -48,13 +50,16 @@ public class PlayerScript : MonoBehaviour
 
         _rbody = GetComponent<Rigidbody2D>();
         weaponCooldown = Time.time;
-
+        int x = 1;
+        int y = 0;
+        
+        
     }
 
     //// Update is called once per frame
     void Update()
     {
-        
+        SetAttackPoint();
         if (Input.GetKeyDown(KeyCode.X) && !isAttacking && Time.time > weaponCooldown + 1
             && msm.hasSword == 1)
         {
@@ -71,7 +76,8 @@ public class PlayerScript : MonoBehaviour
             _rbody.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
             checkDirection();
             changeSkin();
-           // print(direction + " , " + idle);
+            
+            // print(direction + " , " + idle);
         }//testing
         if(!isAttacking && _rbody.velocity.x==0 && _rbody.velocity.y==0)
         {
@@ -219,28 +225,38 @@ public class PlayerScript : MonoBehaviour
         if (_rbody.velocity.x > 0 && _rbody.velocity.y == 0)
         {
             direction = "east";
+            x = 1;
+            y = 0;
             idle = false;
         }
         else if (_rbody.velocity.x > 0 && _rbody.velocity.y > 0)
         {
             direction = "northeast";
+            x = 1;
+            y = 1;
             idle = false;
         }
         else if (_rbody.velocity.x > 0 && _rbody.velocity.y < 0)
         {
             direction = "southeast";
+            x = 1;
+            y = -1;
             idle = false;
 
         }
         else if (_rbody.velocity.x < 0 && _rbody.velocity.y > 0)
         {
             direction = "northwest";
+            x = -1;
+            y = 1;
             idle = false;
 
         }
         else if (_rbody.velocity.x < 0 && _rbody.velocity.y < 0)
         {
             direction = "southwest";
+            x = -1;
+            y = -1;
             idle = false;
 
 
@@ -248,6 +264,8 @@ public class PlayerScript : MonoBehaviour
         else if (_rbody.velocity.x < 0 && _rbody.velocity.y == 0)
         {
             direction = "west";
+            x = -1;
+            y = 0;
             idle = false;
 
 
@@ -255,6 +273,8 @@ public class PlayerScript : MonoBehaviour
         else if (_rbody.velocity.x == 0 && _rbody.velocity.y > 0)
         {
             direction = "north";
+            y = 2;
+            x = 0;
             idle = false;
 
 
@@ -262,6 +282,8 @@ public class PlayerScript : MonoBehaviour
         else if (_rbody.velocity.x == 0 && _rbody.velocity.y < 0)
         {
             direction = "south";
+            y = -2;
+            x = 0;
             idle = false;
 
 
@@ -276,6 +298,7 @@ public class PlayerScript : MonoBehaviour
         if (direction == "west")
         {
             animate.speed = 1;
+            
             animate.Play(west);
         }
         else if (direction == "east")
@@ -371,17 +394,13 @@ public class PlayerScript : MonoBehaviour
         Invoke("StopAnim",4);
         
         Invoke("TurnOffSword", 4);
-        //Invoke("pullswordptTwo", 3);
+        
 
     }
-    private void pullswordptTwo()
+  
+    void SetAttackPoint()
     {
-        isAttacking = true;
-        animate.Play(sword);
-
-
-        Invoke("StopAnim", 1);
-
-        Invoke("TurnOffSword", 1);
+        attackPoint.transform.position = attackPoint.parent.TransformPoint(x, y, 0);
     }
+    
 }
