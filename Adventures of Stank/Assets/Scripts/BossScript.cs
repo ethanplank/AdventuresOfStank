@@ -3,8 +3,8 @@ using UnityEngine;
 public class BossScript : MonoBehaviour
 {
     public int health = 100;
-    public int speedx = 4;
-    public int speedy = 3;
+    public int speedx = 0;
+    public int speedy = -2;
     public MSM msm;
     public int time = 0;
     private Rigidbody2D rb;
@@ -22,8 +22,7 @@ public class BossScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        speedx = -speedx;
-        speedy = -speedy;
+   
         if (collision.gameObject.tag == "Player")
         {
             msm.takeDamage(1);
@@ -35,8 +34,33 @@ public class BossScript : MonoBehaviour
         }
 
     }
-    public void TakeDamage(int damage)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "BossBumpNW")
+        {
+            speedx = 0;
+            speedy = -2;
+        }
+        else if (collision.gameObject.tag == "BossBumpNE")
+        {
+            speedy = 0;
+            speedx = -2;
+        }
+        else if (collision.gameObject.tag == "BossBumpSE")
+        {
+            speedy = 2;
+            speedx = 0;
+        }
+        else if (collision.gameObject.tag == "BossBumpSW")
+        {
+            speedy = 0;
+            speedx = 2;
+        }
+    }
+
+public void TakeDamage(int damage)
+    {
+        print("taking damage");
         health -= damage;
         if (health == 0)
         {
