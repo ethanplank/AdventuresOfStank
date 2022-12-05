@@ -1,10 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class TarekianScript : MonoBehaviour
 {
     public MSM msm;
     Transform _transform;
-    const float travelSpeed = 1;
+    public float travelSpeed = 1;
     Rigidbody2D _rbody;
     int distance = 5;
     public int health = 20;
@@ -55,6 +58,19 @@ public class TarekianScript : MonoBehaviour
         {
             Die();
         }
+        StartCoroutine(HitAnim());
+    }
+    IEnumerator HitAnim()
+    {
+        travelSpeed = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .2f);
+            yield return new WaitForSeconds(.2f);
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(.2f);
+        }
+        travelSpeed = 1;
     }
     void Die()
     {

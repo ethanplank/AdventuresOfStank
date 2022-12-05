@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5082975148458933099}
-  - component: {fileID: 3560989850822795530}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -31,24 +30,6 @@ Transform:
   m_Father: {fileID: 3021417717042020347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3560989850822795530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5344535209590928526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e917e041081acfb469cb69c868c07236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 5082975148458933099}
-  swordRange: 0.4
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  msm: {fileID: 0}
 --- !u!1 &7572147749969985765
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +43,6 @@ GameObject:
   - component: {fileID: 6250111609550292810}
   - component: {fileID: 3460354179445489350}
   - component: {fileID: 6962890238845848139}
-  - component: {fileID: 8231293855160024698}
   - component: {fileID: 8622441811551279823}
   m_Layer: 0
   m_Name: Stank 1
@@ -200,24 +180,12 @@ MonoBehaviour:
   animate: {fileID: 8622441811551279823}
   currentAnimation: 
   direction: 
---- !u!114 &8231293855160024698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572147749969985765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e917e041081acfb469cb69c868c07236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 5082975148458933099}
-  swordRange: 0.5
+  StankTrigger: {fileID: 0}
+  attackPoint: {fileID: 0}
+  swordRange: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 8
-  msm: {fileID: 0}
+    m_Bits: 0
 --- !u!95 &8622441811551279823
 Animator:
   serializedVersion: 3
