@@ -8,7 +8,7 @@ public class RobotScript : MonoBehaviour
     Transform _transform;
     public float travelSpeed = 3;
     Rigidbody2D _rbody;
-    int distance = 5;
+    int distance =8;
     public int health;
     void Start()
     {
@@ -65,15 +65,15 @@ public class RobotScript : MonoBehaviour
     }
     IEnumerator HitAnim()
     {
-        travelSpeed = 0;
-        for (int i = 0; i < 5; i++)
+        //travelSpeed = 0;
+        for (int i = 0; i < 3; i++)
         {
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .2f);
             yield return new WaitForSeconds(.2f);
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(.2f);
         }
-        travelSpeed = 3;
+       //travelSpeed = 3;
     }
 
 

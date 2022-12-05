@@ -9,7 +9,7 @@ public class TarekianScript : MonoBehaviour
     Transform _transform;
     public float travelSpeed = 1;
     Rigidbody2D _rbody;
-    int distance = 5;
+    int distance = 8;
     public int health = 20;
     // Start is called before the first frame update
     void Start()
@@ -62,7 +62,7 @@ public class TarekianScript : MonoBehaviour
     }
     IEnumerator HitAnim()
     {
-        travelSpeed = 0;
+       // travelSpeed = 0;
         for (int i = 0; i < 3; i++)
         {
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .2f);
@@ -70,7 +70,7 @@ public class TarekianScript : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(.2f);
         }
-        travelSpeed = 1;
+       // travelSpeed = 1;
     }
     void Die()
     {
