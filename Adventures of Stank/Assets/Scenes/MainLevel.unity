@@ -3170,6 +3170,8 @@ MonoBehaviour:
   health: 100
   speedx: 4
   speedy: 3
+  speedNorm: 2
+  fastSpeed: 3
   msm: {fileID: 166130696}
   time: 0
 --- !u!50 &1391209482
