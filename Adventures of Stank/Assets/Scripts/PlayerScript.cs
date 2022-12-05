@@ -50,8 +50,6 @@ public class PlayerScript : MonoBehaviour
 
         _rbody = GetComponent<Rigidbody2D>();
         weaponCooldown = Time.time;
-        int x = 1;
-        int y = 0;
         
         
     }

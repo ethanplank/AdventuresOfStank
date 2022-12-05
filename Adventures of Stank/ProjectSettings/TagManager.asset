@@ -24,6 +24,10 @@ TagManager:
   - Part
   - Sign
   - Enemy
+  - BossBumpSW
+  - BossBumpNW
+  - BossBumpNE
+  - BossBumpSE
   layers:
   - Default
   - TransparentFX
