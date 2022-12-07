@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class MSM : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject pauseScreenFade;
     public GameObject pauseText;
-
+    public GameObject grenadePrefab;
     public PlayerScript player;
     public Text gemText;
     private int gems;
@@ -29,6 +30,7 @@ public class MSM : MonoBehaviour
     public int numHearts;
 
     private int cooldown = 1;
+    private int grenadeCount;
     private float timeStamp;
     private float swordDelay;
     public int hasSword;
@@ -41,6 +43,8 @@ public class MSM : MonoBehaviour
     public GameObject part4;
     public GameObject part5;
 
+    Camera _mainCamera;
+
     private AudioSource audiosource;
     public AudioClip heartGain;
     public AudioClip laserShot;
@@ -51,6 +55,9 @@ public class MSM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _mainCamera = Camera.main;
+
+        grenadeCount = 1;//CHANGEME
         timeStamp = Time.time;//Sword cooldown
         inventory = new Inventory();
         audiosource = gameObject.GetComponent<AudioSource>();
@@ -90,6 +97,14 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
+        {
+            Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
+            Instantiate(grenadePrefab, new Vector3(p.x, p.y, 0), Quaternion.identity);
+
+
+            // Instantiate(grenadePrefab, Camera.ScreenToWorldPoint(Input.mousePosition);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))//Quit
         {
             Application.Quit();
