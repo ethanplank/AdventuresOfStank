@@ -181,11 +181,11 @@ MonoBehaviour:
   currentAnimation: 
   direction: 
   StankTrigger: {fileID: 0}
-  attackPoint: {fileID: 0}
-  swordRange: 1
+  attackPoint: {fileID: 5082975148458933099}
+  swordRange: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!95 &8622441811551279823
 Animator:
   serializedVersion: 3

@@ -1071,9 +1071,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 602667725175308443, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 55.264
+      objectReference: {fileID: 0}
+    - target: {fileID: 602667725175308443, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 19.0324
+      objectReference: {fileID: 0}
+    - target: {fileID: 602667725175308443, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20.816
+      objectReference: {fileID: 0}
+    - target: {fileID: 602667725175308443, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -70.5162
+      objectReference: {fileID: 0}
     - target: {fileID: 2171860099686211169, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924488213220105329, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80.7361
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924488213220105329, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 72.7408
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924488213220105329, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80.736115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924488213220105329, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.346405
       objectReference: {fileID: 0}
     - target: {fileID: 4965103216212119962, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_Enabled
@@ -3688,11 +3720,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59fdb6c2a3860a0448ff7caa61fe6dff, type: 3}
---- !u!4 &1404711452 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5082975148458933099, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
-  m_PrefabInstance: {fileID: 8622441810981091786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1413441057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41712,21 +41739,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 166130696}
     - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
-      propertyPath: swordRange
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
-      propertyPath: attackPoint
-      value: 
-      objectReference: {fileID: 1404711452}
-    - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: StankTrigger
       value: 
       objectReference: {fileID: 1236100119}
-    - target: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
-      propertyPath: enemyLayer.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7572147749969985765, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: m_Name
       value: Stank
