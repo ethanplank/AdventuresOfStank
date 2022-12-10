@@ -56,8 +56,15 @@ public class MSM : MonoBehaviour
     void Start()
     {
         _mainCamera = Camera.main;
-
-        grenadeCount = 1;//CHANGEME
+        if (PlayerPrefs.HasKey("grenadeCount"))
+        {
+            grenadeCount = PlayerPrefs.GetInt("grenadeCount");
+        }
+        else
+        {
+            grenadeCount = 0;
+            PlayerPrefs.SetInt("grenadeCount", 0);
+        }
         timeStamp = Time.time;//Sword cooldown
         inventory = new Inventory();
         audiosource = gameObject.GetComponent<AudioSource>();
@@ -99,6 +106,7 @@ public class MSM : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
         {
+            //Need to save it via playerPrefs.
             Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
             Instantiate(grenadePrefab, new Vector3(p.x, p.y, 0), Quaternion.identity);
 
@@ -166,12 +174,25 @@ public class MSM : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 3)//Purchasing hearts
         {
-            if (Input.GetKeyDown(KeyCode.B) && numHearts < 5 && gems >= 15)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && numHearts < 5 && gems >= 15)
             {
                 gems -= 15;
                 numHearts += 2;
                 audiosource.PlayOneShot(heartGain);
                 changeHearts();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) && numHearts < 5 && gems >=25)
+            {
+                gems -= 25;
+                numHearts =6;
+                audiosource.PlayOneShot(heartGain);
+                changeHearts();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3)&& gems >= 20)
+            {
+                grenadeCount++;
+                PlayerPrefs.SetInt("grenadeCount", grenadeCount);
+                gems -= 20;
             }
         }
     }

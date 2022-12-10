@@ -41619,6 +41619,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 557567280}
     - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+      propertyPath: grenadePrefab
+      value: 
+      objectReference: {fileID: 7081935259624656591, guid: a4fb22030e70ea84d95225b33965f5ef, type: 3}
+    - target: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
       propertyPath: currentHeartPic
       value: 
       objectReference: {fileID: 1637680000}
