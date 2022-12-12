@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 21c351f6d9fc7d74d87f7fefbf963ab6, type: 3}
-  m_Color: {r: 0.6415094, g: 0.51240057, b: 0.51240057, a: 1}
+  m_Color: {r: 0.1981132, g: 0.18440725, b: 0.18440725, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -933,7 +933,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.48786634, g: 0.4999225, b: 0.5188679, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1442,12 +1442,16 @@ PrefabInstance:
       value: 16.1158
       objectReference: {fileID: 0}
     - target: {fileID: 2987927854708207416, guid: 0d93a5f3eb01ae54d85f9c3b2dad57a2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987927854708207416, guid: 0d93a5f3eb01ae54d85f9c3b2dad57a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2425
       objectReference: {fileID: 0}
     - target: {fileID: 2987927854708207416, guid: 0d93a5f3eb01ae54d85f9c3b2dad57a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5410023
+      value: 5.5834
       objectReference: {fileID: 0}
     - target: {fileID: 2987927854708207416, guid: 0d93a5f3eb01ae54d85f9c3b2dad57a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2381,7 +2385,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 21c351f6d9fc7d74d87f7fefbf963ab6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.31132078, g: 0.060697734, b: 0.060697734, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2399,8 +2403,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108748301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -4.9325, z: 0}
-  m_LocalScale: {x: 3.5353, y: 0.335031, z: 1}
+  m_LocalPosition: {x: 0.06, y: -4.98, z: 0}
+  m_LocalScale: {x: 3.5353, y: 0.65223837, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
