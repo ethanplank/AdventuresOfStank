@@ -406,11 +406,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2193857778758386543, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_Text
-      value: C
+      value: V
       objectReference: {fileID: 0}
     - target: {fileID: 7770768527494833312, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770768527494833315, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770768527494833340, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_Pivot.x
