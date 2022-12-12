@@ -104,18 +104,22 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("Grenade count:" + grenadeCount);
         if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
         {
             //Need to save it via playerPrefs.
             Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
             Instantiate(grenadePrefab, new Vector3(p.x, p.y, 0), Quaternion.identity);
-
+            grenadeCount--;
+            PlayerPrefs.SetInt("grenadeCount", grenadeCount);
 
             // Instantiate(grenadePrefab, Camera.ScreenToWorldPoint(Input.mousePosition);
         }
         if (Input.GetKeyDown(KeyCode.Escape))//Quit
         {
-            Application.Quit();
+            wipeData();
+            UnityEditor.EditorApplication.isPlaying = false;
+            //Application.Quit();//CHANGEME uncomment FOR BUILD
         }
         if (Input.GetKeyDown(KeyCode.P))//Pause
         {
@@ -196,12 +200,21 @@ public class MSM : MonoBehaviour
             }
         }
     }
+    private void wipeData()
+    {
+        PlayerPrefs.SetInt("Gems", 0);
+        PlayerPrefs.SetInt("Hearts", 6);
+        PlayerPrefs.SetInt("HasSword", 0);
+        PlayerPrefs.SetInt("HasGun", 0);
+        PlayerPrefs.SetInt("grenadeCount", 0);
+    }
     private void saveData()
     {
         PlayerPrefs.SetInt("Gems", gems);
         PlayerPrefs.SetInt("Hearts", numHearts);
         PlayerPrefs.SetInt("HasSword", hasSword);
         PlayerPrefs.SetInt("HasGun", hasGun);
+        PlayerPrefs.SetInt("grenadeCount", grenadeCount);
     }
     private void loadData()
     {
@@ -209,6 +222,7 @@ public class MSM : MonoBehaviour
         numHearts = PlayerPrefs.GetInt("Hearts");
         hasSword = PlayerPrefs.GetInt("HasSword");
         hasGun = PlayerPrefs.GetInt("HasGun");
+        grenadeCount = PlayerPrefs.GetInt("grenadeCount");
         changeHearts();
         gemText.text = "= " + gems.ToString();
         if (hasSword == 1)//Checking to see if player has gotten sword
