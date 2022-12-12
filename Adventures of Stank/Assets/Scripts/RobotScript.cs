@@ -10,12 +10,14 @@ public class RobotScript : MonoBehaviour
     Rigidbody2D _rbody;
     int distance =8;
     public int health;
+    public bool isStuned;
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _transform = transform;
         health = 10;
         msm = FindObjectOfType<MSM>();
+        isStuned = false;
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class RobotScript : MonoBehaviour
         Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         Vector3 speed = new Vector3(PlayerPos.x - _transform.position.x, PlayerPos.y - _transform.position.y, 0);
-        if (speed.magnitude > .2f && speed.magnitude < distance)
+        if ((speed.magnitude > .2f && speed.magnitude < distance) && !isStuned)
         {
             _rbody.velocity = travelSpeed * speed.normalized;
         }
@@ -60,12 +62,14 @@ public class RobotScript : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        isStuned = true;
         health -= damage;
         if (health <= 0)
         {
             Die();
         }
         StartCoroutine(HitAnim());
+        Invoke("resetStun", 2);
     }
     IEnumerator HitAnim()
     {
@@ -78,6 +82,13 @@ public class RobotScript : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
        //travelSpeed = 3;
+    }
+    private void resetStun()
+    {
+        if(isStuned)
+        {
+            isStuned = false;
+        }
     }
 
 
