@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour
 {
-    Animator anim;
+    [SerializeField] Animator anim;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            anim.Play("SlideUp");
+            anim.Play("SlideBack");
+            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        anim.Play("SlideDown");
+        anim.Play("DoorSlide");
+        
     }
-
+    
 }
