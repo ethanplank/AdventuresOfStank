@@ -50,9 +50,11 @@ public class MSM : MonoBehaviour
 
     private AudioSource audiosource;
     public AudioClip heartGain;
+    public AudioClip buyStuff;
     public AudioClip laserShot;
     public AudioClip getHurt;
     public AudioClip useSword;
+    public AudioClip GetPart;
     public AudioClip getGem;
     public AudioClip grenadeSound;
     public AudioClip hissFuse;
@@ -164,7 +166,6 @@ public class MSM : MonoBehaviour
                 smallPotion--;
                 PlayerPrefs.SetInt("smallPotion", smallPotion);
             }
-            print("Potios:" + speedPotion);
             if (Input.GetKeyDown(KeyCode.Alpha2) && speedPotion>0)
             {
                 player.addSpeed();
@@ -247,18 +248,21 @@ public class MSM : MonoBehaviour
                 smallPotion++;
                 gems -= 15;
                 PlayerPrefs.SetInt("gems", gems);
+                audiosource.PlayOneShot(buyStuff);
                 PlayerPrefs.SetInt("smallPotion", smallPotion);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2) && gems >= 15)
             {
                 speedPotion++;
-                gems -= 15;
+                gems -= 15; 
+               audiosource.PlayOneShot(buyStuff);
                 PlayerPrefs.SetInt("gems", gems);
                 PlayerPrefs.SetInt("speedPotion", speedPotion);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3) && gems >= 15)
             {
                 invincibilityPotion++;
+                audiosource.PlayOneShot(buyStuff);
                 gems -= 15;
                 PlayerPrefs.SetInt("gems", gems);
                 PlayerPrefs.SetInt("invincibilityPotion", invincibilityPotion);
@@ -287,6 +291,8 @@ public class MSM : MonoBehaviour
                 grenadeCount++;
                 PlayerPrefs.SetInt("grenadeCount", grenadeCount);
                 gems -= 20;
+                audiosource.PlayOneShot(buyStuff);
+
             }
         }
     }
@@ -581,6 +587,11 @@ public class MSM : MonoBehaviour
     public void displaySignText()
     {
         caveText.gameObject.SetActive(true);
+    }
+    public void GetPartSound()
+    {
+        audiosource.PlayOneShot(GetPart);
+
     }
     public void hideSignText()
     {

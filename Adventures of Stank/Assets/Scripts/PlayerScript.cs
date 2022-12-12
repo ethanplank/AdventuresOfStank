@@ -202,6 +202,8 @@ public class PlayerScript : MonoBehaviour
             || collision.gameObject.tag == "Part3" || collision.gameObject.tag == "Part4"
             || collision.gameObject.tag == "Part5")
         {
+            msm.GetPartSound();
+
             if (collision.gameObject.tag == "Part1")//removing parts if hit
             {
                 PlayerPrefs.SetInt("Part1", 0);
