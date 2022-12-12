@@ -41,11 +41,7 @@ public class TarekianScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            msm.takeDamage(1);
-
-        }
+       
         if (collision.gameObject.tag == "Bullet")
         {
             TakeDamage(5);
@@ -56,6 +52,11 @@ public class TarekianScript : MonoBehaviour
         if (collision.gameObject.tag == "grenade")
         {
             Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            msm.takeDamage(1);
+
         }
     }
     public void TakeDamage(int damage)
