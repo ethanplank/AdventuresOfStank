@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Comic.unity
     guid: 58afdd6f1df1ee04a8be1a5b007d4bdb
+  - enabled: 1
+    path: Assets/Scenes/PotionsShop.unity
+    guid: 90b89bc26cfc32b479e4dde0cd8f6cd0
   m_configObjects: {}

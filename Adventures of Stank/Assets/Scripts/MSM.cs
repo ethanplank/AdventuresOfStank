@@ -89,12 +89,17 @@ public class MSM : MonoBehaviour
             }
             if (PlayerPrefs.GetInt("Spawn") == 2)
             {
-                player.gameObject.transform.position = new Vector3(2, -9, 0);
+                player.gameObject.transform.position = new Vector3(-6, -9, 0);
 
             }
             if (PlayerPrefs.GetInt("Spawn") == 3)
             {
                 player.gameObject.transform.position = new Vector3(3, -18, 0);
+
+            }
+            if (PlayerPrefs.GetInt("Spawn") == 4)
+            {
+                player.gameObject.transform.position = new Vector3(51, -19, 0);
 
             }
 
@@ -380,7 +385,20 @@ public class MSM : MonoBehaviour
         }
         loadData();
     }
-
+    public void openPotions()
+    {
+        PlayerPrefs.SetInt("Spawn", 4);//CHANGEME
+        saveData();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(8);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            SceneManager.LoadScene(1);
+        }
+        loadData();
+    }
     public void shootLaser()
     {
         audiosource.PlayOneShot(laserShot);

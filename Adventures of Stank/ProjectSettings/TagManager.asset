@@ -29,6 +29,7 @@ TagManager:
   - BossBumpNE
   - BossBumpSE
   - grenade
+  - PotionsDoor
   layers:
   - Default
   - TransparentFX

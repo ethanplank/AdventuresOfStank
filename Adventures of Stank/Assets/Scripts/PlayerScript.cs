@@ -163,6 +163,11 @@ public class PlayerScript : MonoBehaviour
             }
 
         }
+        if (collision.gameObject.tag == "PotionsDoor")
+        {
+            msm.openPotions();
+        }
+        
         if (collision.gameObject.tag == "ShopDoor")
         {
             msm.openShop();
