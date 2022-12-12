@@ -11,12 +11,14 @@ public class TarekianScript : MonoBehaviour
     Rigidbody2D _rbody;
     int distance = 8;
     public int health = 20;
+    
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _transform = transform;
         msm = FindObjectOfType<MSM>();
+        
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class TarekianScript : MonoBehaviour
        
         if (collision.gameObject.tag == "Bullet")
         {
-            TakeDamage(5);
+            TakeDamage(5,false);
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
@@ -59,8 +61,10 @@ public class TarekianScript : MonoBehaviour
 
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isSword)
     {
+        
+        
         health -= damage;
         if (health <= 0)
         {

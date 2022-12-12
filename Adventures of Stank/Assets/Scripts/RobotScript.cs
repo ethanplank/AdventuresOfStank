@@ -10,14 +10,15 @@ public class RobotScript : MonoBehaviour
     Rigidbody2D _rbody;
     int distance =8;
     public int health;
-    public bool isStuned;
+    public EnemyScript ES;
+    
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _transform = transform;
         health = 10;
         msm = FindObjectOfType<MSM>();
-        isStuned = false;
+        ES = FindObjectOfType<EnemyScript>();
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class RobotScript : MonoBehaviour
         Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         Vector3 speed = new Vector3(PlayerPos.x - _transform.position.x, PlayerPos.y - _transform.position.y, 0);
-        if ((speed.magnitude > .2f && speed.magnitude < distance) && !isStuned)
+        if ((speed.magnitude > .2f && speed.magnitude < distance) && !ES.isStuned)
         {
             _rbody.velocity = travelSpeed * speed.normalized;
         }
@@ -43,7 +44,7 @@ public class RobotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        print("fudge");
         if (collision.gameObject.tag == "grenade")
         {
             Destroy(gameObject);
@@ -58,19 +59,26 @@ public class RobotScript : MonoBehaviour
        
         if (collision.gameObject.tag == "Bullet")
         {
-            TakeDamage(5);
+            TakeDamage(5,false);
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isSword)
     {
-        isStuned = true;
+        if (isSword)
+        {
+            toStun();
+        }
         health -= damage;
         if (health <= 0)
         {
             Die();
         }
         StartCoroutine(HitAnim());
-        Invoke("resetStun", 2);
+        
+    }
+    public void toStun()
+    {
+        ES.Stun();
     }
     IEnumerator HitAnim()
     {
@@ -84,13 +92,7 @@ public class RobotScript : MonoBehaviour
         }
        //travelSpeed = 3;
     }
-    private void resetStun()
-    {
-        if(isStuned)
-        {
-            isStuned = false;
-        }
-    }
+    
 
 
 void Die()

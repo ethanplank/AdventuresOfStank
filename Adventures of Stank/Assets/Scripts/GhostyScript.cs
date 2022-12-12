@@ -12,12 +12,14 @@ public class GhostyScript : MonoBehaviour
     Rigidbody2D _rbody;
     int distance = 10;
     public int health;
+    public EnemyScript ES;
     void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _transform = transform;
         health = 20;
         msm = FindObjectOfType<MSM>();
+        ES = FindObjectOfType<EnemyScript>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class GhostyScript : MonoBehaviour
         Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         Vector3 speed = new Vector3(PlayerPos.x - _transform.position.x, PlayerPos.y - _transform.position.y, 0);
-        if (speed.magnitude > .2f && speed.magnitude < distance)
+        if (speed.magnitude > .2f && speed.magnitude < distance && !ES.isStuned)
         {
             gameObject.GetComponent<AIPath>().enabled = true;
         }
@@ -59,11 +61,16 @@ public class GhostyScript : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
-            TakeDamage(5);
+            TakeDamage(5,false);
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isSword)
     {
+        if(isSword)
+        {
+            ES.Stun();
+        }
+        
         health -= damage;
         if (health <= 0)
         {

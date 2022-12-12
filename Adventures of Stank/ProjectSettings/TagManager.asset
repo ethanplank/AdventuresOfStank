@@ -30,6 +30,8 @@ TagManager:
   - BossBumpSE
   - grenade
   - PotionsDoor
+  - Ghosty
+  - Tarekian
   layers:
   - Default
   - TransparentFX

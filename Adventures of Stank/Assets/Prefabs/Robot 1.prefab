@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4124342849605848764}
   m_Layer: 3
   m_Name: Robot 1
-  m_TagString: Enemy
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msm: {fileID: 0}
+  travelSpeed: 3
   health: 10
+  ES: {fileID: 1991251978044885639, guid: 55640381bc0c12a40b2f71109d54fa30, type: 3}
 --- !u!95 &4124342849605848764
 Animator:
   serializedVersion: 3

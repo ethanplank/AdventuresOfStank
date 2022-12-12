@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 2670826464234836392}
   - component: {fileID: 2670826464234836393}
   - component: {fileID: 2670826464234836394}
+  - component: {fileID: 3340102106370740459}
+  - component: {fileID: 5151862978250280083}
   m_Layer: 0
   m_Name: Ghosty
-  m_TagString: Untagged
+  m_TagString: Ghosty
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +120,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!58 &3340102106370740459
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670826464234836395}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.006144464}
+  serializedVersion: 2
+  m_Radius: 0.6904784
+--- !u!114 &5151862978250280083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670826464234836395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf8f038844612145aaf1df9c18a2093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msm: {fileID: 8014664803616947027, guid: b12d45fa7421f2d4bbb3cc1f1b9ac266, type: 3}
+  health: 0
+  ES: {fileID: 0}
 --- !u!1 &2670826464609784452
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2529817669052143915}
   m_Layer: 0
   m_Name: Tarekian 1
-  m_TagString: Enemy
+  m_TagString: Tarekian
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   msm: {fileID: 0}
   travelSpeed: 1
   health: 20
+  ES: {fileID: 0}
 --- !u!61 &5381345180537762142
 BoxCollider2D:
   m_ObjectHideFlags: 0

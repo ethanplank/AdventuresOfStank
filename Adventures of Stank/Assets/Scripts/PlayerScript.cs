@@ -103,7 +103,15 @@ public class PlayerScript : MonoBehaviour
         //Enemy damage
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<RobotScript>().TakeDamage(10);
+            if (enemy.CompareTag("Robot"))
+            {
+                enemy.GetComponent<RobotScript>().TakeDamage(10, true);
+            }
+            if (enemy.CompareTag("Ghosty"))
+            {
+                enemy.GetComponent<GhostyScript>().TakeDamage(10, true);
+            }
+            
 
         }
 
