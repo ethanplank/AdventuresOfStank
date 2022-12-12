@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PotionsShop.unity
     guid: 90b89bc26cfc32b479e4dde0cd8f6cd0
+  - enabled: 1
+    path: Assets/Scenes/ItemControlList.unity
+    guid: 06aa19d47bd708c4fb2f4b8a5a124b80
   m_configObjects: {}

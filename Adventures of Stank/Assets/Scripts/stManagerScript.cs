@@ -19,4 +19,9 @@ public class stManagerScript : MonoBehaviour
         SceneManager.LoadScene(7);
 
     }
+    public void OnControlsButtonClick()
+    {
+        SceneManager.LoadScene(9);
+
+    }
 }

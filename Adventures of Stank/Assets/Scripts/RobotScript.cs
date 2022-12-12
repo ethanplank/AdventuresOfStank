@@ -97,7 +97,11 @@ public class RobotScript : MonoBehaviour
 
 void Die()
     {
+        msm.RobotDeathNoise();
         Destroy(gameObject);
     }
+    private void RobotDie()
+    {
 
+    }
 }
