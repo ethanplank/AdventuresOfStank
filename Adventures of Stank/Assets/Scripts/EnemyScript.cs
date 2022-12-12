@@ -2,28 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class TarekianScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
     public MSM msm;
     Transform _transform;
-    public float travelSpeed = 1;
+    public float travelSpeed;
     Rigidbody2D _rbody;
-    int distance = 8;
-    public int health = 20;
-    // Start is called before the first frame update
-    void Start()
-    {
-        _rbody = GetComponent<Rigidbody2D>();
-        _transform = transform;
-        msm = FindObjectOfType<MSM>();
-    }
+    int distance;
+    public int health;
+ 
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
     void FixedUpdate()
     {
         Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
@@ -39,23 +28,24 @@ public class TarekianScript : MonoBehaviour
         }
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             msm.takeDamage(1);
-
         }
-        if (collision.gameObject.tag == "Bullet")
-        {
-            TakeDamage(5);
-        }
-    }
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
         if (collision.gameObject.tag == "grenade")
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage(5);
         }
     }
     public void TakeDamage(int damage)
@@ -69,7 +59,7 @@ public class TarekianScript : MonoBehaviour
     }
     IEnumerator HitAnim()
     {
-       // travelSpeed = 0;
+        //travelSpeed = 0;
         for (int i = 0; i < 3; i++)
         {
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, .2f);
@@ -77,10 +67,15 @@ public class TarekianScript : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(.2f);
         }
-       // travelSpeed = 1;
+        //travelSpeed = 3;
     }
+
+
     void Die()
     {
         Destroy(gameObject);
     }
+
 }
+
+

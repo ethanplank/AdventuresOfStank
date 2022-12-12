@@ -5,11 +5,14 @@ using UnityEngine;
 public class grenadeScript : MonoBehaviour
 {
     CircleCollider2D circleCollider;
+    public GameObject flamesParticles;
+    public GameObject smoke;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Explode", 1);
         circleCollider = GetComponent<CircleCollider2D>();
+
+        Invoke("Explode", 2);
     }
 
     // Update is called once per frame
@@ -19,15 +22,10 @@ public class grenadeScript : MonoBehaviour
     }
     private void Explode()
     {
+        smoke.SetActive(false);
         circleCollider.enabled = true;
-        Invoke("destroyGrenade", 1);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Destroy(collision.gameObject);
-        }
+        flamesParticles.SetActive(true);
+        Invoke("destroyGrenade", .5f);
     }
     private void destroyGrenade()
     {

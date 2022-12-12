@@ -41,14 +41,18 @@ public class RobotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        
+        if (collision.gameObject.tag == "grenade")
         {
-            msm.takeDamage(1);
+            Destroy(gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.gameObject.tag == "Player")
+        {
+            msm.takeDamage(1);
+        }
         if (collision.gameObject.tag == "Bullet")
         {
             TakeDamage(5);

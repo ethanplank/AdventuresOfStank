@@ -49,6 +49,10 @@ public class GhostyScript : MonoBehaviour
         {
             msm.takeDamage(1);
         }
+        if (collision.gameObject.tag == "grenade")
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
