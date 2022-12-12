@@ -43,6 +43,8 @@ public class PlayerScript : MonoBehaviour
     public float swordRange = 1.0f;
     public LayerMask enemyLayer;
 
+    public GameObject yellowSparks;
+    public GameObject blueSparks;
     // Start is called before the first frame update
     void Start()
     {
@@ -373,6 +375,7 @@ public class PlayerScript : MonoBehaviour
     private void TurnOnCollider()
     {
         StankTrigger.SetActive(true);
+        yellowSparks.SetActive(false);
     }
     private void ColorChange()
     {
@@ -403,11 +406,16 @@ public class PlayerScript : MonoBehaviour
     }
   public void addSpeed()
     {
+      //  gameObject.GetComponent<SpriteRenderer>().material.color = Color.blue;
+        blueSparks.SetActive(true);
         speed++;
     }
     public void makeInvincible()
     {
-        //todo
+        // gameObject.GetComponent<SpriteRenderer>().material.color = Color.yellow;
+        yellowSparks.SetActive(true);
+        StankTrigger.SetActive(false);
+        Invoke("TurnOnCollider", 10);
     }
     public void makeSmall()
     {
