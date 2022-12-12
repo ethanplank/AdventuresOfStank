@@ -70,12 +70,14 @@ MonoBehaviour:
   part3: {fileID: 0}
   part4: {fileID: 0}
   part5: {fileID: 0}
+  robotDeath: {fileID: 8300000, guid: cc95988b0aa0d1d4eb055b0ec1bd1558, type: 3}
   heartGain: {fileID: 8300000, guid: 7b32c874a31d9e54f84700f5cf56a4fb, type: 3}
   buyStuff: {fileID: 8300000, guid: b8e45693b55559544aae0122fc8439be, type: 3}
   laserShot: {fileID: 8300000, guid: 234051f8c925a604183986456a594a1e, type: 3}
   getHurt: {fileID: 8300000, guid: 527c7f8500a27db4fa87975ddc40661d, type: 3}
   useSword: {fileID: 8300000, guid: df8059e37fd16284baf3f260abb5fcff, type: 3}
   GetPart: {fileID: 8300000, guid: 4cd96bdeea8c52d4ca5497950b46bacc, type: 3}
+  drinkPotion: {fileID: 8300000, guid: e36cf6562cb7aee4ab5e02009518de4a, type: 3}
   getGem: {fileID: 8300000, guid: 27e7fc18caf89674c9df37d34a500e67, type: 3}
   grenadeSound: {fileID: 8300000, guid: 6bf3336eb31fd7744bbae6c9db5c0783, type: 3}
   hissFuse: {fileID: 8300000, guid: baaa21bd8f80dd64d9326f8938da2b80, type: 3}

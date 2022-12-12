@@ -49,12 +49,14 @@ public class MSM : MonoBehaviour
     Camera _mainCamera;
 
     private AudioSource audiosource;
+    public AudioClip robotDeath;
     public AudioClip heartGain;
     public AudioClip buyStuff;
     public AudioClip laserShot;
     public AudioClip getHurt;
     public AudioClip useSword;
     public AudioClip GetPart;
+    public AudioClip drinkPotion;
     public AudioClip getGem;
     public AudioClip grenadeSound;
     public AudioClip hissFuse;
@@ -162,18 +164,24 @@ public class MSM : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha1) && smallPotion>0)
             {
+                audiosource.PlayOneShot(drinkPotion);
+
                 player.makeSmall();
                 smallPotion--;
                 PlayerPrefs.SetInt("smallPotion", smallPotion);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2) && speedPotion>0)
             {
+                audiosource.PlayOneShot(drinkPotion);
+
                 player.addSpeed();
                 speedPotion--;
                 PlayerPrefs.SetInt("speedPotion", speedPotion);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3) && invincibilityPotion>0)
             {
+                audiosource.PlayOneShot(drinkPotion);
+
                 player.makeInvincible();
                 invincibilityPotion--;
                 PlayerPrefs.SetInt("invincibilityPotion", invincibilityPotion);
@@ -597,5 +605,13 @@ public class MSM : MonoBehaviour
     public void hideSignText()
     {
         caveText.gameObject.SetActive(false);
+    }
+    public void RobotDeathNoise()
+    {
+        Invoke("RobotDie", 1f);
+    }
+    private void RobotDie()
+    {
+        audiosource.PlayOneShot(robotDeath);
     }
 }
