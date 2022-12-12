@@ -58,14 +58,14 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         SetAttackPoint();
-        if (Input.GetKeyDown(KeyCode.X) && !isAttacking && Time.time > weaponCooldown + 1
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking && Time.time > weaponCooldown + 1
             && msm.hasSword == 1)
         {
 
             sAttack();
 
         }
-        if (Input.GetKeyDown(KeyCode.Z) && !isAttacking && Time.time > weaponCooldown + 1 && msm.hasGun == 1)
+        if (Input.GetKeyDown(KeyCode.V) && !isAttacking && Time.time > weaponCooldown + 1 && msm.hasGun == 1)
         {
             shootGun();
         }
@@ -97,6 +97,7 @@ public class PlayerScript : MonoBehaviour
         //Attack Animation
         //Detect enemies in range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, swordRange, enemyLayer);
+        
         //Enemy damage
         foreach (Collider2D enemy in hitEnemies)
         {

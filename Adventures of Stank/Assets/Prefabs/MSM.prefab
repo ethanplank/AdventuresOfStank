@@ -54,6 +54,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7263273335872378831, guid: d6ba84d11ec6b9e4dbc92dba5880669e, type: 3}
   pauseScreenFade: {fileID: 7919519031515313662, guid: 2b10180cb250776469a7eb6f28c7a828, type: 3}
   pauseText: {fileID: 4726551566742411560, guid: e5ef938d357e23b4092d1e7c5ffdcebe, type: 3}
+  grenadePrefab: {fileID: 0}
   player: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
   gemText: {fileID: 0}
   caveText: {fileID: 0}
@@ -74,6 +75,8 @@ MonoBehaviour:
   getHurt: {fileID: 8300000, guid: 527c7f8500a27db4fa87975ddc40661d, type: 3}
   useSword: {fileID: 8300000, guid: df8059e37fd16284baf3f260abb5fcff, type: 3}
   getGem: {fileID: 8300000, guid: 27e7fc18caf89674c9df37d34a500e67, type: 3}
+  grenadeSound: {fileID: 8300000, guid: 6bf3336eb31fd7744bbae6c9db5c0783, type: 3}
+  hissFuse: {fileID: 8300000, guid: baaa21bd8f80dd64d9326f8938da2b80, type: 3}
   UI_Inventory: {fileID: 0}
 --- !u!82 &4003336586256384693
 AudioSource:

@@ -5481,9 +5481,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1872059312019227066, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_Text
+      value: Space
+      objectReference: {fileID: 0}
     - target: {fileID: 2171860099686211169, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193857778758386543, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
+      propertyPath: m_Text
+      value: V
       objectReference: {fileID: 0}
     - target: {fileID: 3022951654478267332, guid: 7279a4ed0284d7d48be307541890426e, type: 3}
       propertyPath: m_RootOrder

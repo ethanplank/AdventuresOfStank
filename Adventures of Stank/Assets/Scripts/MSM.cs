@@ -51,6 +51,8 @@ public class MSM : MonoBehaviour
     public AudioClip getHurt;
     public AudioClip useSword;
     public AudioClip getGem;
+    public AudioClip grenadeSound;
+    public AudioClip hissFuse;
     [SerializeField] private UI_Inventory UI_Inventory;
     // Start is called before the first frame update
     void Start()
@@ -104,11 +106,14 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Grenade count:" + grenadeCount);
         if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
         {
+            Invoke("playGrenadeSound", 2);
+            audiosource.PlayOneShot(hissFuse);
+
             //Need to save it via playerPrefs.
             Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
+            
             Instantiate(grenadePrefab, new Vector3(p.x, p.y, 0), Quaternion.identity);
             grenadeCount--;
             PlayerPrefs.SetInt("grenadeCount", grenadeCount);
@@ -278,7 +283,6 @@ public class MSM : MonoBehaviour
 
         loadData();
     }
-    //TODO: pull sword animation
     public void PullSword()
     {
         //Enter code for animation of pulling sword out here.
@@ -467,7 +471,10 @@ public class MSM : MonoBehaviour
     {
         audiosource.PlayOneShot(useSword);
     }
-
+    private void playGrenadeSound()
+    {
+        audiosource.PlayOneShot(grenadeSound);
+    }
     public void displaySignText()
     {
         caveText.gameObject.SetActive(true);
