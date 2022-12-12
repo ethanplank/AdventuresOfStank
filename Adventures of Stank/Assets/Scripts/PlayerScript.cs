@@ -401,7 +401,18 @@ public class PlayerScript : MonoBehaviour
         
 
     }
-  
+  public void addSpeed()
+    {
+        speed++;
+    }
+    public void makeInvincible()
+    {
+        //todo
+    }
+    public void makeSmall()
+    {
+        gameObject.transform.localScale = new Vector3(.2f, .2f, 1);
+    }
     void SetAttackPoint()
     {
         attackPoint.transform.position = attackPoint.parent.TransformPoint(x, y, 0);

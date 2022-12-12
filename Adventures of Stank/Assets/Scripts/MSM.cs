@@ -37,6 +37,9 @@ public class MSM : MonoBehaviour
     public int hasGun;
     private Inventory inventory;
 
+    private int smallPotion;
+    private int speedPotion;
+    private int invincibilityPotion;
     public GameObject part1;
     public GameObject part2;
     public GameObject part3;
@@ -66,6 +69,33 @@ public class MSM : MonoBehaviour
         {
             grenadeCount = 0;
             PlayerPrefs.SetInt("grenadeCount", 0);
+        }
+        if (PlayerPrefs.HasKey("smallPotion"))
+        {
+            smallPotion = PlayerPrefs.GetInt("smallPotion");
+        }
+        else
+        {
+            smallPotion = 0;
+            PlayerPrefs.SetInt("smallPotion", 0);
+        }
+        if (PlayerPrefs.HasKey("speedPotion"))
+        {
+            speedPotion = PlayerPrefs.GetInt("speedPotion");
+        }
+        else
+        {
+            speedPotion = 0;
+            PlayerPrefs.SetInt("speedPotion", 0);
+        }
+        if (PlayerPrefs.HasKey("invincibilityPotion"))
+        {
+            invincibilityPotion = PlayerPrefs.GetInt("invincibilityPotion");
+        }
+        else
+        {
+            invincibilityPotion = 0;
+            PlayerPrefs.SetInt("invincibilityPotion", 0);
         }
         timeStamp = Time.time;//Sword cooldown
         inventory = new Inventory();
@@ -111,20 +141,45 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            Invoke("playGrenadeSound", 2);
-            audiosource.PlayOneShot(hissFuse);
+            if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
+            {
+                Invoke("playGrenadeSound", 2);
+                audiosource.PlayOneShot(hissFuse);
 
-            //Need to save it via playerPrefs.
-            Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
-            
-            Instantiate(grenadePrefab, new Vector3(p.x, p.y, 0), Quaternion.identity);
-            grenadeCount--;
-            PlayerPrefs.SetInt("grenadeCount", grenadeCount);
+                //Need to save it via playerPrefs.
+                Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 
-            // Instantiate(grenadePrefab, Camera.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(grenadePrefab, new Vector3(p.x, p.y, 0), Quaternion.identity);
+                grenadeCount--;
+                PlayerPrefs.SetInt("grenadeCount", grenadeCount);
+
+                // Instantiate(grenadePrefab, Camera.ScreenToWorldPoint(Input.mousePosition);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1) && smallPotion>0)
+            {
+                player.makeSmall();
+                smallPotion--;
+                PlayerPrefs.SetInt("smallPotion", smallPotion);
+            }
+            print("Potios:" + speedPotion);
+            if (Input.GetKeyDown(KeyCode.Alpha2) && speedPotion>0)
+            {
+                player.addSpeed();
+                speedPotion--;
+                PlayerPrefs.SetInt("speedPotion", speedPotion);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3) && invincibilityPotion>0)
+            {
+                player.makeInvincible();
+                invincibilityPotion--;
+                PlayerPrefs.SetInt("invincibilityPotion", invincibilityPotion);
+            }
+
         }
+       
         if (Input.GetKeyDown(KeyCode.Escape))//Quit
         {
             wipeData();
@@ -185,8 +240,33 @@ public class MSM : MonoBehaviour
         {
             SceneManager.LoadScene(6);
         }
+        if (SceneManager.GetActiveScene().buildIndex == 8)//Item store
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1) && gems >= 15)
+            {
+                smallPotion++;
+                gems -= 15;
+                PlayerPrefs.SetInt("gems", gems);
+                PlayerPrefs.SetInt("smallPotion", smallPotion);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) && gems >= 15)
+            {
+                speedPotion++;
+                gems -= 15;
+                PlayerPrefs.SetInt("gems", gems);
+                PlayerPrefs.SetInt("speedPotion", speedPotion);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3) && gems >= 15)
+            {
+                invincibilityPotion++;
+                gems -= 15;
+                PlayerPrefs.SetInt("gems", gems);
+                PlayerPrefs.SetInt("invincibilityPotion", invincibilityPotion);
+            }
+        }
 
-        if (SceneManager.GetActiveScene().buildIndex == 3)//Purchasing hearts
+
+        if (SceneManager.GetActiveScene().buildIndex == 3)//Item store
         {
             if (Input.GetKeyDown(KeyCode.Alpha1) && numHearts < 5 && gems >= 15)
             {
@@ -217,6 +297,11 @@ public class MSM : MonoBehaviour
         PlayerPrefs.SetInt("HasSword", 0);
         PlayerPrefs.SetInt("HasGun", 0);
         PlayerPrefs.SetInt("grenadeCount", 0);
+        PlayerPrefs.SetInt("invincibilityPotion", 0);
+        PlayerPrefs.SetInt("speedPotion", 0);
+        PlayerPrefs.SetInt("smallPotion", 0);
+
+
     }
     private void saveData()
     {
