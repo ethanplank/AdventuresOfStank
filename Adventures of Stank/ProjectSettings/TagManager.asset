@@ -28,6 +28,7 @@ TagManager:
   - BossBumpNW
   - BossBumpNE
   - BossBumpSE
+  - grenade
   layers:
   - Default
   - TransparentFX
