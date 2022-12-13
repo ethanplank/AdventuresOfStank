@@ -23,7 +23,7 @@ public class MSM : MonoBehaviour
 
     public Text grenadeText;
     public Text partText;
-    private float partCount = 6;
+    private float partCount = 5;
     public Text blueText;
     public Text purpText;
     public Text yellowText;
@@ -92,7 +92,7 @@ public class MSM : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetFloat("PartsLeft", 6);
+            PlayerPrefs.SetFloat("PartsLeft", 5);
         }
         if (PlayerPrefs.HasKey("smallPotion"))
         {
@@ -170,12 +170,37 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            partCount = 5;
+        }
         partCount = PlayerPrefs.GetFloat("PartsLeft");
         blueText.text = smallPotion.ToString();
         purpText.text = speedPotion.ToString();
         yellowText.text = invincibilityPotion.ToString();
         grenadeText.text = grenadeCount.ToString();
+        if (!part1)
+        {
+            partCount--;
+        }
+        if (!part2)
+        {
+            partCount--;
+        }
+        if (!part3)
+        {
+            partCount--;
+        }
+        if (!part4)
+        {
+            partCount--;
+        }
+        if (!part5)
+        {
+            partCount--;
+        }
         partText.text = partCount.ToString();
+        
         //TODO
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -223,8 +248,8 @@ public class MSM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))//Quit
         {
             wipeData();
-            UnityEditor.EditorApplication.isPlaying = false;
-            //Application.Quit();//CHANGEME uncomment FOR BUILD
+           // UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();//CHANGEME uncomment FOR BUILD
         }
         if (Input.GetKeyDown(KeyCode.P))//Pause
         {
@@ -345,7 +370,7 @@ public class MSM : MonoBehaviour
         PlayerPrefs.SetInt("invincibilityPotion", 0);
         PlayerPrefs.SetInt("speedPotion", 0);
         PlayerPrefs.SetInt("smallPotion", 0);
-        PlayerPrefs.SetFloat("PartsLeft", 6);
+        PlayerPrefs.SetFloat("PartsLeft", 5);
 
     }
     private void saveData()

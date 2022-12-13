@@ -28,8 +28,8 @@ public class CoinScript : MonoBehaviour
     
         if (collision.gameObject.tag == "PlayerBox")
         {
-           // msm.addGem();
-            //Destroy(gameObject);
+            msm.addGem();
+            Destroy(gameObject);
         }
     }
 }
