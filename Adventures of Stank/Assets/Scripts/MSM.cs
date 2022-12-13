@@ -20,8 +20,11 @@ public class MSM : MonoBehaviour
     public PlayerScript player;
     public Text gemText;
     private int gems;
-    public Text caveText;
 
+    public Text caveText;
+    public Text shopSignText;
+    public Text gunSignText;
+    public Text potionSignText;
     public Image currentHeartPic;
     public Image isSword;
     public Image isGun;
@@ -445,7 +448,7 @@ public class MSM : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        
+        print("fudge");
         audiosource.PlayOneShot(getHurt);
         if (numHearts >= 1)
         {
@@ -597,6 +600,10 @@ public class MSM : MonoBehaviour
     {
         caveText.gameObject.SetActive(true);
     }
+    public void displayGunSignText()
+    {
+        gunSignText.gameObject.SetActive(true);
+    }
     public void GetPartSound()
     {
         audiosource.PlayOneShot(GetPart);
@@ -606,12 +613,36 @@ public class MSM : MonoBehaviour
     {
         caveText.gameObject.SetActive(false);
     }
+    public void hidePotionSignText()
+    {
+        potionSignText.gameObject.SetActive(false);
+    }
+    public void hideShopSignText()
+    {
+        shopSignText.gameObject.SetActive(false);
+
+
+    }
+    public void hideGunSignText()
+    {
+        gunSignText.gameObject.SetActive(false);
+
+
+    }
     public void RobotDeathNoise()
     {
         Invoke("RobotDie", 1f);
     }
     private void RobotDie()
     {
-        audiosource.PlayOneShot(robotDeath);
+        //audiosource.PlayOneShot(robotDeath);
+    }
+    public void showShopSignText()
+    {
+        shopSignText.gameObject.SetActive( true); 
+    }
+    public void showPotionSignText()
+    {
+        potionSignText.gameObject.SetActive( true);
     }
 }

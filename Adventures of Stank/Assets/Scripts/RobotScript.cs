@@ -19,6 +19,7 @@ public class RobotScript : MonoBehaviour
         health = 10;
         msm = FindObjectOfType<MSM>();
         ES = FindObjectOfType<EnemyScript>();
+
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class RobotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        print("fudge");
         if (collision.gameObject.tag == "grenade")
         {
             Destroy(gameObject);
