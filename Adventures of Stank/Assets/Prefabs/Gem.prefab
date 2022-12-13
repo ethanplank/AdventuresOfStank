@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5546182070074684571}
   - component: {fileID: -60137910787900100}
   - component: {fileID: 657316424252313353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gem
   m_TagString: Gem
   m_Icon: {fileID: 0}
@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e3c1e3fcf605a438a14049928082da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  msm: {fileID: 0}

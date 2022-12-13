@@ -28,7 +28,7 @@ public class TarekianScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Vector3 PlayerPos = GameObject.FindGameObjectWithTag("PlayerBox").transform.position;
 
         Vector3 speed = new Vector3(PlayerPos.x - _transform.position.x, PlayerPos.y - _transform.position.y, 0);
         if (speed.magnitude > .2f && speed.magnitude < distance)

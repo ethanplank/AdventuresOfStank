@@ -240,6 +240,7 @@ public class PlayerScript : MonoBehaviour
         {
             msm.addGem();
             Destroy(collision.gameObject);
+
         }
         if (collision.gameObject.tag == "Part1" || collision.gameObject.tag == "Part2"
             || collision.gameObject.tag == "Part3" || collision.gameObject.tag == "Part4"

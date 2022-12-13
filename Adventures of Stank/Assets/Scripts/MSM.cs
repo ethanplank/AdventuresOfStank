@@ -23,7 +23,7 @@ public class MSM : MonoBehaviour
 
     public Text grenadeText;
     public Text partText;
-    private int partCount = 6;
+    private float partCount = 6;
     public Text blueText;
     public Text purpText;
     public Text yellowText;
@@ -88,11 +88,11 @@ public class MSM : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("PartsLeft"))
         {
-            partCount = PlayerPrefs.GetInt("PartsLeft");
+            partCount = PlayerPrefs.GetFloat("PartsLeft");
         }
         else
         {
-            PlayerPrefs.SetInt("PartsLeft", 6);
+            PlayerPrefs.SetFloat("PartsLeft", 6);
         }
         if (PlayerPrefs.HasKey("smallPotion"))
         {
@@ -170,7 +170,7 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        partCount = PlayerPrefs.GetInt("PartsLeft");
+        partCount = PlayerPrefs.GetFloat("PartsLeft");
         blueText.text = smallPotion.ToString();
         purpText.text = speedPotion.ToString();
         yellowText.text = invincibilityPotion.ToString();
@@ -345,7 +345,7 @@ public class MSM : MonoBehaviour
         PlayerPrefs.SetInt("invincibilityPotion", 0);
         PlayerPrefs.SetInt("speedPotion", 0);
         PlayerPrefs.SetInt("smallPotion", 0);
-
+        PlayerPrefs.SetFloat("PartsLeft", 6);
 
     }
     private void saveData()
@@ -355,7 +355,7 @@ public class MSM : MonoBehaviour
         PlayerPrefs.SetInt("HasSword", hasSword);
         PlayerPrefs.SetInt("HasGun", hasGun);
         PlayerPrefs.SetInt("grenadeCount", grenadeCount);
-        PlayerPrefs.SetInt("PartsLeft", partCount);
+        PlayerPrefs.SetFloat("PartsLeft", partCount);
     }
     private void loadData()
     {
@@ -385,8 +385,8 @@ public class MSM : MonoBehaviour
     }
     public void decrementParts()
     {
-        partCount--;
-        PlayerPrefs.SetInt("PartsLeft", partCount);
+        partCount-=.5f;
+        PlayerPrefs.SetFloat("PartsLeft", partCount);
     }
     public void hitDoor()
     {
