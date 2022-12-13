@@ -235,18 +235,18 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.tag == "Gem")
-        //{
-          //  msm.addGem();
-            //Destroy(collision.gameObject);
+        if (collision.gameObject.tag == "Gem")
+        {
+            msm.addGem();
+            Destroy(collision.gameObject);
 
-        //}
+        }
         if (collision.gameObject.tag == "Part1" || collision.gameObject.tag == "Part2"
             || collision.gameObject.tag == "Part3" || collision.gameObject.tag == "Part4"
             || collision.gameObject.tag == "Part5")
         {
             msm.GetPartSound();
-            //msm.decrementParts();
+            msm.decrementParts();
 
             if (collision.gameObject.tag == "Part1")//removing parts if hit
             {
