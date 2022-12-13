@@ -112,9 +112,11 @@ public class MSM : MonoBehaviour
         hasGun = 0;//Refreshing variables
 
         loadData();
-        UI_Inventory.SetInventory(inventory);//Resetting inventory, spawn
+        
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
+            UI_Inventory.SetInventory(inventory);//Resetting inventory, spawn
+
             if (PlayerPrefs.GetInt("Spawn") == 0)
             {
                 player.gameObject.transform.position = new Vector3(-4, -1, 0);
