@@ -46,6 +46,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject yellowSparks;
     public GameObject blueSparks;
+    public GameObject purpleSparks;
     // Start is called before the first frame update
     void Start()
     {
@@ -197,13 +198,36 @@ public class PlayerScript : MonoBehaviour
         {
             msm.displaySignText();
         }
-
+        if (collision.gameObject.tag == "ShopSign")
+        {
+            msm.showShopSignText();
+        }
+        if (collision.gameObject.tag == "GunSign")
+        {
+            msm.displayGunSignText();
+        }
+        if (collision.gameObject.tag == "PotionSign")
+        {
+            msm.showPotionSignText();
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Sign")
         {
             msm.hideSignText();
+        }
+        if (collision.gameObject.tag == "ShopSign")
+        {
+            msm.hideShopSignText();
+        }
+        if (collision.gameObject.tag == "GunSign")
+        {
+            msm.hideGunSignText();
+        }
+        if(collision.gameObject.tag == "PotionSign")
+        {
+            msm.hidePotionSignText();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -435,7 +459,7 @@ public class PlayerScript : MonoBehaviour
   public void addSpeed()
     {
       //  gameObject.GetComponent<SpriteRenderer>().material.color = Color.blue;
-        blueSparks.SetActive(true);
+        purpleSparks.SetActive(true);
         speed++;
     }
     public void makeInvincible()
@@ -447,6 +471,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void makeSmall()
     {
+        blueSparks.SetActive(true);
         gameObject.transform.localScale = new Vector3(.2f, .2f, 1);
     }
     void SetAttackPoint()
