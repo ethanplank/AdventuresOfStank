@@ -12,10 +12,12 @@ public class BossScript : MonoBehaviour
     public MSM msm;
     public int time = 0;
     private Rigidbody2D rb;
+    public SlidingDoor quidy;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
 
     }
 
@@ -83,7 +85,7 @@ public void TakeDamage(int damage)
         health -= damage;
         if (health == 0)
         {
-
+            quidy.SquidOpen();
             Die();
         }
         StartCoroutine(HitAnim());

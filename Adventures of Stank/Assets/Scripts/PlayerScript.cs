@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     const string gunForward = "StankGunForward";
 
     const string pullsword = "StankSwordPull 0";
+    const string pullGun = "StankGunPull";
 
 
     public string direction;
@@ -111,6 +112,11 @@ public class PlayerScript : MonoBehaviour
             {
                 enemy.GetComponent<GhostyScript>().TakeDamage(10, true);
             }
+            if (enemy.CompareTag("Boss"))
+            {
+                print("hi");
+                enemy.GetComponent<BossScript>().TakeDamage(10);
+            }
             
 
         }
@@ -170,6 +176,7 @@ public class PlayerScript : MonoBehaviour
             if (msm.hasGun == 0)
             {
                 msm.PullGun();
+                pullGunAnimation();
             }
 
         }
@@ -413,6 +420,17 @@ public class PlayerScript : MonoBehaviour
         Invoke("TurnOffSword", 4);
         
 
+    }
+    public void pullGunAnimation()
+    {
+        animate.speed = 1;
+
+        isAttacking = true;
+        animate.Play(pullGun);
+
+        Invoke("StopAnim", 3);
+
+        Invoke("TurnOffGun", 3);
     }
   public void addSpeed()
     {

@@ -445,7 +445,7 @@ public class MSM : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        print("fudge");
+        
         audiosource.PlayOneShot(getHurt);
         if (numHearts >= 1)
         {
