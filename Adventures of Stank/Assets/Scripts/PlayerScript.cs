@@ -112,6 +112,11 @@ public class PlayerScript : MonoBehaviour
             {
                 enemy.GetComponent<GhostyScript>().TakeDamage(10, true);
             }
+            if (enemy.CompareTag("Boss"))
+            {
+                print("hi");
+                enemy.GetComponent<BossScript>().TakeDamage(10);
+            }
             
 
         }

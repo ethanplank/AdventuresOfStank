@@ -44,7 +44,7 @@ public class RobotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("fudge");
+        
         if (collision.gameObject.tag == "grenade")
         {
             Destroy(gameObject);

@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour
 {
+    public bool isSquid;
     [SerializeField] Animator anim;
+    
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.CompareTag("Player"))
         {
-            anim.Play("SlideBack");
+            //anim.Play("SlideBack");
+            if (isSquid)
+            {
+                anim.Play("SquidSlide");
+            }
             
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        anim.Play("DoorSlide");
+        anim.Play("SquidBack");
         
+    }
+    public void SquidOpen()
+    {
+        anim.Play("SquidSlide");
+        Destroy(gameObject);
+
     }
     
 }
