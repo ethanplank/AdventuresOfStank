@@ -58,6 +58,9 @@ MonoBehaviour:
   player: {fileID: 6962890238845848139, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
   gemText: {fileID: 0}
   caveText: {fileID: 0}
+  shopSignText: {fileID: 0}
+  gunSignText: {fileID: 0}
+  potionSignText: {fileID: 0}
   currentHeartPic: {fileID: 0}
   isSword: {fileID: 0}
   isGun: {fileID: 0}
@@ -81,6 +84,7 @@ MonoBehaviour:
   getGem: {fileID: 8300000, guid: 27e7fc18caf89674c9df37d34a500e67, type: 3}
   grenadeSound: {fileID: 8300000, guid: 6bf3336eb31fd7744bbae6c9db5c0783, type: 3}
   hissFuse: {fileID: 8300000, guid: baaa21bd8f80dd64d9326f8938da2b80, type: 3}
+  shopSound: {fileID: 8300000, guid: 2732ceb2a00e8854e8d51888cf6a6dd1, type: 3}
   UI_Inventory: {fileID: 0}
 --- !u!82 &4003336586256384693
 AudioSource:
