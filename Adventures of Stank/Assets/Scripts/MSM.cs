@@ -63,10 +63,12 @@ public class MSM : MonoBehaviour
     public AudioClip getGem;
     public AudioClip grenadeSound;
     public AudioClip hissFuse;
+    public AudioClip shopSound;
     [SerializeField] private UI_Inventory UI_Inventory;
     // Start is called before the first frame update
     void Start()
     {
+        
         _mainCamera = Camera.main;
         if (PlayerPrefs.HasKey("grenadeCount"))
         {
@@ -480,6 +482,7 @@ public class MSM : MonoBehaviour
     }
     public void openShop()
     {
+        
         PlayerPrefs.SetInt("Spawn", 2);
         saveData();
         if (SceneManager.GetActiveScene().buildIndex == 1)
