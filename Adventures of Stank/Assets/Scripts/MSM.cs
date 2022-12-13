@@ -141,7 +141,10 @@ public class MSM : MonoBehaviour
                 player.gameObject.transform.position = new Vector3(51, -19, 0);
 
             }
+            if (PlayerPrefs.GetInt("Spawn") == 5){
+                player.gameObject.transform.position = new Vector3(2, -25, 0);
 
+            }
 
 
         }
@@ -450,7 +453,6 @@ public class MSM : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        print("fudge");
         audiosource.PlayOneShot(getHurt);
         if (numHearts >= 1)
         {
@@ -499,6 +501,20 @@ public class MSM : MonoBehaviour
             SceneManager.LoadScene(8);
         }
         if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            SceneManager.LoadScene(1);
+        }
+        loadData();
+    }
+    public void openDungeon()
+    {
+        PlayerPrefs.SetInt("Spawn", 5);
+        saveData();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(10);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 10)
         {
             SceneManager.LoadScene(1);
         }

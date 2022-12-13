@@ -210,6 +210,10 @@ public class PlayerScript : MonoBehaviour
         {
             msm.showPotionSignText();
         }
+        if (collision.gameObject.tag == "DungeonDoor")
+        {
+            msm.openDungeon();
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
