@@ -68,7 +68,10 @@ public class ZorgScript : MonoBehaviour
         {
             TakeDamage(5);
         }
-
+        if (collision.gameObject.tag == "Wall")
+        {
+            isClose = false;
+        }
     }
     public void TakeDamage(int damage)
     {
@@ -104,11 +107,11 @@ public class ZorgScript : MonoBehaviour
             }
             if (notLowHealth)
             {
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(9);
             }
             else
             {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(4);
             }
         }
     }

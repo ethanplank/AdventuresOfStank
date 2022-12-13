@@ -10,7 +10,7 @@ public class GhostyScript : MonoBehaviour
     Transform _transform;
     const float travelSpeed = 3;
     Rigidbody2D _rbody;
-    int distance = 10;
+    int distance = 15;
     public int health;
     public EnemyScript ES;
     void Start()
