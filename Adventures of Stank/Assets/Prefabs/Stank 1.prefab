@@ -9654,7 +9654,7 @@ GameObject:
   - component: {fileID: 8622441811551279823}
   m_Layer: 0
   m_Name: Stank 1
-  m_TagString: Player
+  m_TagString: PlayerBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

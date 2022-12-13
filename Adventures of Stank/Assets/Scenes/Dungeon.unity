@@ -373,10 +373,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stank 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7572147749969985765, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
-      propertyPath: m_TagString
-      value: PlayerBox
-      objectReference: {fileID: 0}
     - target: {fileID: 9025212936781394167, guid: edca06e78481dd44c827909d18d2fcc9, type: 3}
       propertyPath: m_SortingOrder
       value: 0
