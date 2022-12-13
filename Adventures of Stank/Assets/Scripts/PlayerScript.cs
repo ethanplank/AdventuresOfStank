@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     public Transform attackPoint;
     int x;
     int y;
-    public float swordRange = 1.0f;
+    public float swordRange = 2.5f;
     public LayerMask enemyLayer;
 
     public GameObject yellowSparks;
@@ -246,6 +246,7 @@ public class PlayerScript : MonoBehaviour
             || collision.gameObject.tag == "Part5")
         {
             msm.GetPartSound();
+            msm.decrementParts();
 
             if (collision.gameObject.tag == "Part1")//removing parts if hit
             {

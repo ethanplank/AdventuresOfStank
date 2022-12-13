@@ -77,3 +77,6 @@ TagManager:
   - name: Pause
     uniqueID: 2542303491
     locked: 0
+  - name: gem
+    uniqueID: 2598542805
+    locked: 0

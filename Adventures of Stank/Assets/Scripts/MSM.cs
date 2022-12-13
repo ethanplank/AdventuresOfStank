@@ -21,6 +21,12 @@ public class MSM : MonoBehaviour
     public Text gemText;
     private int gems;
 
+    public Text grenadeText;
+    public Text partText;
+    private int partCount = 6;
+    public Text blueText;
+    public Text purpText;
+    public Text yellowText;
     public Text caveText;
     public Text shopSignText;
     public Text gunSignText;
@@ -70,6 +76,7 @@ public class MSM : MonoBehaviour
     {
         
         _mainCamera = Camera.main;
+
         if (PlayerPrefs.HasKey("grenadeCount"))
         {
             grenadeCount = PlayerPrefs.GetInt("grenadeCount");
@@ -155,7 +162,12 @@ public class MSM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        blueText.text = smallPotion.ToString();
+        purpText.text = speedPotion.ToString();
+        yellowText.text = invincibilityPotion.ToString();
+        grenadeText.text = grenadeCount.ToString();
+        partText.text = partCount.ToString();
+        //TODO
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (Input.GetMouseButtonDown(0) && grenadeCount > 0)
@@ -361,7 +373,10 @@ public class MSM : MonoBehaviour
             isGun.gameObject.SetActive(true);
         }
     }
-
+    public void decrementParts()
+    {
+        partCount--;
+    }
     public void hitDoor()
     {
         saveData();
